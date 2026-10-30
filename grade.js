@@ -25,3 +25,15 @@ function getRemark(avg) {
 console.log("Name: " + studentName);
 console.log("Average: " + computeAverage(grades));
 console.log("Remark: " + getRemark(computeAverage(grades)));
+
+
+function getLetter(avg) {
+  if (avg >= 90) {
+    return "A";
+  } else if (avg >= 80) {
+    return "B";
+  } else if (avg >= 75) {
+    return "C";
+  }
+  return "F";
+}
