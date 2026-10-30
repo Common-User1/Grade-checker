@@ -54,6 +54,7 @@ students.forEach(function (student) {
     console.log("Name: " + student.name);
     console.log("Average: " + computeAverage(student.grades));
     console.log("Remark: " + getRemark(computeAverage(student.grades)));
+    console.log("Highest: " + getHighest(student.grades));
     console.log("Letter: " + getLetter(computeAverage(student.grades)));
   } else {
     console.log("Error: invalid grade for " + student.name);
