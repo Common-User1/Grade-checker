@@ -40,3 +40,14 @@ function getLetter(avg) {
 
 
 console.log("Letter: " + getLetter(computeAverage(grades)));
+
+
+// Check if all grades are from 0 to 100
+function isValid(list) {
+  for (let i = 0; i < list.length; i++) {
+    if (list[i] < 0 || list[i] > 100) {
+      return false;
+    }
+  }
+  return true;
+}
