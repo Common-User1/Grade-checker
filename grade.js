@@ -37,3 +37,6 @@ function getLetter(avg) {
   }
   return "F";
 }
+
+
+console.log("Letter: " + getLetter(computeAverage(grades)));
