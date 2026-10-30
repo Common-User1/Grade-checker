@@ -48,13 +48,14 @@ let students = [
   { name: "Pedro", grades: [70, 65, 72] }
 ];
 
-let first = students[0];
-
-if (isValid(first.grades)) {
-  console.log("Name: " + first.name);
-  console.log("Average: " + computeAverage(first.grades));
-  console.log("Remark: " + getRemark(computeAverage(first.grades)));
-  console.log("Letter: " + getLetter(computeAverage(first.grades)));
-} else {
-  console.log("Error: invalid grade found");
-}
+students.forEach(function (student) {
+  console.log("----------");
+  if (isValid(student.grades)) {
+    console.log("Name: " + student.name);
+    console.log("Average: " + computeAverage(student.grades));
+    console.log("Remark: " + getRemark(computeAverage(student.grades)));
+    console.log("Letter: " + getLetter(computeAverage(student.grades)));
+  } else {
+    console.log("Error: invalid grade for " + student.name);
+  }
+});
