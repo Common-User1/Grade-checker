@@ -20,3 +20,6 @@ function getRemark(avg) {
   }
   return "Failed";
 }
+
+
+console.log("Name: " + studentName);
