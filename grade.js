@@ -59,3 +59,15 @@ students.forEach(function (student) {
     console.log("Error: invalid grade for " + student.name);
   }
 });
+
+
+// Get the highest grade in a list
+function getHighest(list) {
+  let highest = list[0];
+  for (let i = 1; i < list.length; i++) {
+    if (list[i] > highest) {
+      highest = list[i];
+    }
+  }
+  return highest;
+}
