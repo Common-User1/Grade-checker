@@ -1,9 +1,5 @@
 // Grade Checker
 
-
-let studentName = "Juan";
-let grades = [85, 90, 78];
-
 // Compute the average of a list of grades
 function computeAverage(list) {
   let total = 0;
@@ -46,11 +42,19 @@ function isValid(list) {
 }
 
 
-if (isValid(grades)) {
-  console.log("Name: " + studentName);
-  console.log("Average: " + computeAverage(grades));
-  console.log("Remark: " + getRemark(computeAverage(grades)));
-  console.log("Letter: " + getLetter(computeAverage(grades)));
+let students = [
+  { name: "Juan", grades: [85, 90, 78] },
+  { name: "Maria", grades: [92, 88, 95] },
+  { name: "Pedro", grades: [70, 65, 72] }
+];
+
+let first = students[0];
+
+if (isValid(first.grades)) {
+  console.log("Name: " + first.name);
+  console.log("Average: " + computeAverage(first.grades));
+  console.log("Remark: " + getRemark(computeAverage(first.grades)));
+  console.log("Letter: " + getLetter(computeAverage(first.grades)));
 } else {
   console.log("Error: invalid grade found");
 }
