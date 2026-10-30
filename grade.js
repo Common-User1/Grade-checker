@@ -12,3 +12,11 @@ function computeAverage(list) {
   }
   return total / list.length;
 }
+
+
+function getRemark(avg) {
+  if (avg >= 75) {
+    return "Passed";
+  }
+  return "Failed";
+}
