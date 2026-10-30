@@ -4,7 +4,7 @@
 let studentName = "Juan";
 let grades = [85, 90, 78];
 
-
+// Compute the average of a list of grades
 function computeAverage(list) {
   let total = 0;
   for (let i = 0; i < list.length; i++) {
@@ -13,7 +13,7 @@ function computeAverage(list) {
   return total / list.length;
 }
 
-
+// Get the remark based on the average
 function getRemark(avg) {
   if (avg >= 75) {
     return "Passed";
@@ -26,7 +26,7 @@ console.log("Name: " + studentName);
 console.log("Average: " + computeAverage(grades));
 console.log("Remark: " + getRemark(computeAverage(grades)));
 
-
+// Get the letter grade based on the average
 function getLetter(avg) {
   if (avg >= 90) {
     return "A";
