@@ -22,10 +22,6 @@ function getRemark(avg) {
 }
 
 
-console.log("Name: " + studentName);
-console.log("Average: " + computeAverage(grades));
-console.log("Remark: " + getRemark(computeAverage(grades)));
-
 // Get the letter grade based on the average
 function getLetter(avg) {
   if (avg >= 90) {
@@ -39,9 +35,6 @@ function getLetter(avg) {
 }
 
 
-console.log("Letter: " + getLetter(computeAverage(grades)));
-
-
 // Check if all grades are from 0 to 100
 function isValid(list) {
   for (let i = 0; i < list.length; i++) {
@@ -50,4 +43,14 @@ function isValid(list) {
     }
   }
   return true;
+}
+
+
+if (isValid(grades)) {
+  console.log("Name: " + studentName);
+  console.log("Average: " + computeAverage(grades));
+  console.log("Remark: " + getRemark(computeAverage(grades)));
+  console.log("Letter: " + getLetter(computeAverage(grades)));
+} else {
+  console.log("Error: invalid grade found");
 }
