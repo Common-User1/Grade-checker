@@ -1,4 +1,7 @@
 // Grade Checker
+// This program checks the grades of students
+
+// ----- Functions -----
 
 // Compute the average of a list of grades
 function computeAverage(list) {
@@ -17,7 +20,6 @@ function getRemark(avg) {
   return "Failed";
 }
 
-
 // Get the letter grade based on the average
 function getLetter(avg) {
   if (avg >= 90) {
@@ -30,7 +32,6 @@ function getLetter(avg) {
   return "F";
 }
 
-
 // Check if all grades are from 0 to 100
 function isValid(list) {
   for (let i = 0; i < list.length; i++) {
@@ -40,27 +41,6 @@ function isValid(list) {
   }
   return true;
 }
-
-
-let students = [
-  { name: "Juan", grades: [85, 90, 78] },
-  { name: "Maria", grades: [92, 88, 95] },
-  { name: "Pedro", grades: [70, 65, 72] }
-];
-
-students.forEach(function (student) {
-  console.log("----------");
-  if (isValid(student.grades)) {
-    console.log("Name: " + student.name);
-    console.log("Average: " + computeAverage(student.grades));
-    console.log("Remark: " + getRemark(computeAverage(student.grades)));
-    console.log("Highest: " + getHighest(student.grades));
-    console.log("Letter: " + getLetter(computeAverage(student.grades)));
-  } else {
-    console.log("Error: invalid grade for " + student.name);
-  }
-});
-
 
 // Get the highest grade in a list
 function getHighest(list) {
@@ -72,3 +52,26 @@ function getHighest(list) {
   }
   return highest;
 }
+
+// ----- Data -----
+
+let students = [
+  { name: "Juan", grades: [85, 90, 78] },
+  { name: "Maria", grades: [92, 88, 95] },
+  { name: "Pedro", grades: [70, 65, 72] }
+];
+
+// ----- Main -----
+
+students.forEach(function (student) {
+  console.log("----------");
+  if (isValid(student.grades)) {
+    console.log("Name: " + student.name);
+    console.log("Average: " + computeAverage(student.grades));
+    console.log("Remark: " + getRemark(computeAverage(student.grades)));
+    console.log("Letter: " + getLetter(computeAverage(student.grades)));
+    console.log("Highest: " + getHighest(student.grades));
+  } else {
+    console.log("Error: invalid grade for " + student.name);
+  }
+});
