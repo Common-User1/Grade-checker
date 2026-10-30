@@ -23,3 +23,4 @@ function getRemark(avg) {
 
 
 console.log("Name: " + studentName);
+console.log("Average: " + computeAverage(grades));
