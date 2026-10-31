@@ -284,3 +284,7 @@ footer {
 footer a {
   color: #2980b9;
 }
+
+.subject-units {
+  flex: 1;
+}
