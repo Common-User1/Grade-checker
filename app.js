@@ -7,6 +7,9 @@ let students = [];
 let sortColumn = "";
 let sortDirection = "asc";
 
+// Index of the student being edited (-1 means not editing)
+let editingIndex = -1;
+
 // Add a new subject row (subject name + grade)
 function addSubjectRow() {
   let container = document.getElementById("subjects");
