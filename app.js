@@ -1,5 +1,5 @@
 // App script: connects the page to the grade functions
-
+document.getElementById("checkBtn").addEventListener("click", checkGrades);
 
 // Read the inputs and check the grades
 function checkGrades() {
@@ -9,6 +9,11 @@ function checkGrades() {
   let grade3 = document.getElementById("grade3").value;
 
   let grades = [Number(grade1), Number(grade2), Number(grade3)];
+  
+    if (!isValid(grades)) {
+    result.innerHTML = "Error: grades must be from 0 to 100";
+    return;
+  }
 
   let average = computeAverage(grades);
   let remark = getRemark(average);
@@ -25,5 +30,3 @@ function checkGrades() {
     "Highest: " + highest;
 }
 
-
-document.getElementById("checkBtn").addEventListener("click", checkGrades);
