@@ -191,3 +191,23 @@ tr:hover td {
   background-color: #fadbd8;
   color: #922b21;
 }
+
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+
+  .subject-row {
+    flex-wrap: wrap;
+  }
+
+  .subject-name {
+    flex: 1 1 100%;
+  }
+
+  .actions button,
+  #addSubjectBtn {
+    width: 100%;
+    margin-right: 0;
+  }
+}
