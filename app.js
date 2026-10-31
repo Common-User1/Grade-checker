@@ -124,11 +124,16 @@ function showStudents() {
     let s = students[i];
     let row = document.createElement("tr");
 
+    let badgeClass = "badge-failed";
+    if (s.remark === "Passed") {
+      badgeClass = "badge-passed";
+    }
+
     row.innerHTML =
       "<td>" + s.name + "</td>" +
       "<td>" + s.subjects + "</td>" +
       "<td>" + s.average + "</td>" +
-      "<td>" + s.remark + "</td>" +
+      '<td><span class="badge ' + badgeClass + '">' + s.remark + "</span></td>" +
       "<td>" + s.letter + "</td>" +
       "<td>" + s.highest + "</td>" +
       '<td><button type="button" class="delete-btn">Delete</button></td>';
