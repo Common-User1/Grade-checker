@@ -122,14 +122,21 @@ function saveStudent() {
     return;
   }
 
-  students.push(student);
+  if (editingIndex === -1) {
+    students.push(student);
+  } else {
+    students[editingIndex] = student;
+    clearAll();
+  }
+
   saveToStorage();
   showStudents();
 }
 
-
 // Clear all inputs and the result
 function clearAll() {
+  stopEditing();
+
   document.getElementById("studentName").value = "";
 
   document.getElementById("subjects").innerHTML = "";
@@ -140,6 +147,12 @@ function clearAll() {
   let result = document.getElementById("result");
   result.innerHTML = "";
   result.className = "";
+}
+
+// Go back to normal mode (not editing)
+function stopEditing() {
+  editingIndex = -1;
+  document.getElementById("saveBtn").textContent = "Save Student";
 }
 
 // Show all saved students in the table
