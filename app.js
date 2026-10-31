@@ -1,5 +1,19 @@
 // App script: connects the page to the grade functions
 
+
+// Add a new subject row (subject name + grade)
+function addSubjectRow() {
+  let container = document.getElementById("subjects");
+
+  let row = document.createElement("div");
+  row.className = "subject-row";
+
+  row.innerHTML =
+    '<input type="text" class="subject-name" placeholder="Subject">' +
+    '<input type="number" class="subject-grade" placeholder="Grade">';
+
+  container.appendChild(row);
+}
 // Read the inputs and check the grades
 function checkGrades() {
   let result = document.getElementById("result");
