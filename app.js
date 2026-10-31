@@ -33,10 +33,24 @@ function checkGrades() {
     "Remark: " + remark + "<br>" +
     "Letter: " + letter + "<br>" +
     "Highest: " + highest;
-}
 
-  if (remark === "Passed") {
+    if (remark === "Passed") {
     result.className = "passed";
   } else {
     result.className = "failed";
   }
+}
+
+// Clear all inputs and the result
+function clearAll() {
+  document.getElementById("studentName").value = "";
+  document.getElementById("grade1").value = "";
+  document.getElementById("grade2").value = "";
+  document.getElementById("grade3").value = "";
+
+  let result = document.getElementById("result");
+  result.innerHTML = "";
+  result.className = "";
+}
+
+document.getElementById("clearBtn").addEventListener("click", clearAll);
