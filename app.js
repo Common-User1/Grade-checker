@@ -142,6 +142,20 @@ function saveToStorage() {
   localStorage.setItem("students", JSON.stringify(students));
 }
 
+// Save the students list in the browser
+function saveToStorage() {
+  localStorage.setItem("students", JSON.stringify(students));
+}
+
+// Load the saved students when the page opens
+function loadFromStorage() {
+  let saved = localStorage.getItem("students");
+
+  if (saved !== null) {
+    students = JSON.parse(saved);
+  }
+}
+
 document.getElementById("checkBtn").addEventListener("click", checkGrades);
 document.getElementById("clearBtn").addEventListener("click", clearAll);
 document.getElementById("saveBtn").addEventListener("click", saveStudent);
@@ -151,4 +165,8 @@ document.getElementById("addSubjectBtn").addEventListener("click", addSubjectRow
 // Start with 3 subject rows
 addSubjectRow();
 addSubjectRow();
-addSubjectRow();
+addSubjectRow(); 
+
+// Load and show the saved students
+loadFromStorage();
+showStudents();
