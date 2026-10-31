@@ -1,0 +1,1 @@
+// App script: connects the page to the grade functions
