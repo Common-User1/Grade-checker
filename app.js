@@ -11,11 +11,8 @@ function checkGrades() {
   let grades = [Number(grade1), Number(grade2), Number(grade3)];
 
   let average = computeAverage(grades);
-
   let remark = getRemark(average);
-
   let letter = getLetter(average);
-
   let highest = getHighest(grades);
 
   let result = document.getElementById("result");
