@@ -167,6 +167,15 @@ function deleteStudent(index) {
   showStudents();
 }
 
+// Delete all saved students
+function clearStudents() {
+  if (confirm("Delete all saved students?")) {
+    students = [];
+    saveToStorage();
+    showStudents();
+  }
+}
+
 document.getElementById("checkBtn").addEventListener("click", checkGrades);
 document.getElementById("clearBtn").addEventListener("click", clearAll);
 document.getElementById("saveBtn").addEventListener("click", saveStudent);
@@ -181,3 +190,5 @@ addSubjectRow();
 // Load and show the saved students
 loadFromStorage();
 showStudents();
+
+document.getElementById("clearStudentsBtn").addEventListener("click", clearStudents);
