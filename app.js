@@ -30,22 +30,32 @@ function checkGrades() {
   let name = document.getElementById("studentName").value;
   let gradeBoxes = document.querySelectorAll(".subject-grade");
   let nameBoxes = document.querySelectorAll(".subject-name");
+  let unitBoxes = document.querySelectorAll(".subject-units");
 
   let grades = [];
+  let units = [];
   let subjectList = [];
+  let subjectData = [];
   let hasEmpty = name === "";
 
   for (let i = 0; i < gradeBoxes.length; i++) {
-    if (gradeBoxes[i].value === "") {
+    if (gradeBoxes[i].value === "" || unitBoxes[i].value === "") {
       hasEmpty = true;
     }
-    grades.push(Number(gradeBoxes[i].value));
+
+    let grade = Number(gradeBoxes[i].value);
+    let unit = Number(unitBoxes[i].value);
+
+    grades.push(grade);
+    units.push(unit);
 
     let subjectName = nameBoxes[i].value;
     if (subjectName === "") {
       subjectName = "Subject " + (i + 1);
     }
-    subjectList.push(subjectName + ": " + gradeBoxes[i].value);
+
+    subjectList.push(subjectName + " (" + unit + "u): " + grade);
+    subjectData.push({ name: subjectName, grade: grade, units: unit });
   }
 
   if (hasEmpty || grades.length === 0) {
@@ -60,7 +70,15 @@ function checkGrades() {
     return null;
   }
 
-  let average = computeAverage(grades);
+  for (let i = 0; i < units.length; i++) {
+    if (units[i] <= 0) {
+      result.innerHTML = "Error: units must be more than 0";
+      result.className = "failed";
+      return null;
+    }
+  }
+
+  let average = computeWeightedAverage(grades, units);
   let remark = getRemark(average);
   let letter = getLetter(average);
   let highest = getHighest(grades);
@@ -81,6 +99,7 @@ function checkGrades() {
   return {
     name: name,
     subjects: subjectList.join(", "),
+    subjectData: subjectData,
     average: average.toFixed(2),
     remark: remark,
     letter: letter,
