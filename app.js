@@ -146,6 +146,16 @@ function showStudents() {
   }
 }
 
+// Check if a student matches the search and filter
+function matchesFilter(student) {
+  let search = document.getElementById("searchBox").value.toLowerCase();
+  let filter = document.getElementById("filterSelect").value;
+
+  let nameMatches = student.name.toLowerCase().includes(search);
+  let remarkMatches = filter === "all" || student.remark === filter;
+
+  return nameMatches && remarkMatches;
+}
 // Save the students list in the browser
 function saveToStorage() {
   localStorage.setItem("students", JSON.stringify(students));
