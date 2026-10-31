@@ -211,3 +211,27 @@ tr:hover td {
     margin-right: 0;
   }
 }
+
+.filter-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+#searchBox {
+  flex: 1;
+  min-width: 0;
+}
+
+#filterSelect {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccd3da;
+  border-radius: 6px;
+  background-color: white;
+}
+
+.empty-message {
+  text-align: center;
+  color: #7f8c8d;
+}
