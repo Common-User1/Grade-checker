@@ -273,3 +273,14 @@ tr:hover td {
   color: #7f8c8d;
   margin-top: 4px;
 }
+
+footer {
+  text-align: center;
+  color: #7f8c8d;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+footer a {
+  color: #2980b9;
+}
