@@ -172,7 +172,12 @@ function showStudents() {
       '<td><span class="badge ' + badgeClass + '">' + s.remark + "</span></td>" +
       "<td>" + s.letter + "</td>" +
       "<td>" + s.highest + "</td>" +
-      '<td><button type="button" class="delete-btn">Delete</button></td>';
+      '<td><button type="button" class="edit-btn">Edit</button> ' +
+      '<button type="button" class="delete-btn">Delete</button></td>';
+
+    row.querySelector(".edit-btn").addEventListener("click", function () {
+      editStudent(i);
+    });
 
     row.querySelector(".delete-btn").addEventListener("click", function () {
       deleteStudent(i);
@@ -185,7 +190,6 @@ function showStudents() {
     let emptyRow = document.createElement("tr");
     emptyRow.innerHTML = '<td colspan="7" class="empty-message">No students found.</td>';
     body.appendChild(emptyRow);
-    
   }
 
   showSummary();

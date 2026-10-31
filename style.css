@@ -297,3 +297,13 @@ th.sortable {
 th.sortable:hover {
   background-color: #3d566e;
 }
+
+.edit-btn {
+  background-color: #f39c12;
+  padding: 6px 12px;
+  font-size: 14px;
+}
+
+.edit-btn:hover {
+  background-color: #d68910;
+}
