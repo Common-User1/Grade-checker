@@ -53,3 +53,15 @@ function getHighest(list) {
   return highest;
 }
 
+// Compute the weighted average (GWA) using the units of each subject
+function computeWeightedAverage(grades, units) {
+  let totalPoints = 0;
+  let totalUnits = 0;
+
+  for (let i = 0; i < grades.length; i++) {
+    totalPoints = totalPoints + grades[i] * units[i];
+    totalUnits = totalUnits + units[i];
+  }
+
+  return totalPoints / totalUnits;
+}
