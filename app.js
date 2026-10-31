@@ -295,6 +295,26 @@ function sortStudents(column) {
   });
 
   showStudents();
+  showArrows();
+}
+
+// Show the sort arrow on the active column
+function showArrows() {
+  let headings = document.querySelectorAll("th.sortable");
+
+  for (let i = 0; i < headings.length; i++) {
+    let arrow = headings[i].querySelector(".arrow");
+
+    if (headings[i].dataset.column === sortColumn) {
+      if (sortDirection === "asc") {
+        arrow.textContent = "\u25B2";
+      } else {
+        arrow.textContent = "\u25BC";
+      }
+    } else {
+      arrow.textContent = "";
+    }
+  }
 }
 
 // Delete one student from the list
