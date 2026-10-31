@@ -120,11 +120,17 @@ function showStudents() {
   let body = document.getElementById("studentsBody");
   body.innerHTML = "";
 
+  let shown = 0;
+
   for (let i = 0; i < students.length; i++) {
     let s = students[i];
-      if (!matchesFilter(s)) {
-        continue;
-      }
+
+    if (!matchesFilter(s)) {
+      continue;
+    }
+
+    shown = shown + 1;
+
     let row = document.createElement("tr");
 
     let badgeClass = "badge-failed";
@@ -146,6 +152,12 @@ function showStudents() {
     });
 
     body.appendChild(row);
+  }
+
+  if (shown === 0) {
+    let emptyRow = document.createElement("tr");
+    emptyRow.innerHTML = '<td colspan="7" class="empty-message">No students found.</td>';
+    body.appendChild(emptyRow);
   }
 }
 
