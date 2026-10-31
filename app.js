@@ -13,6 +13,7 @@ function addSubjectRow() {
   row.innerHTML =
     '<input type="text" class="subject-name" placeholder="Subject">' +
     '<input type="number" class="subject-grade" placeholder="Grade">' +
+    '<input type="number" class="subject-units" placeholder="Units" value="3" min="1">' +
     '<button type="button" class="remove-btn">X</button>';
 
   row.querySelector(".remove-btn").addEventListener("click", function () {
