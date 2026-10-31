@@ -96,6 +96,7 @@ function saveStudent() {
   }
 
   students.push(student);
+  saveToStorage();
   showStudents();
 }
 
@@ -134,6 +135,11 @@ function showStudents() {
 
     body.appendChild(row);
   }
+}
+
+// Save the students list in the browser
+function saveToStorage() {
+  localStorage.setItem("students", JSON.stringify(students));
 }
 
 document.getElementById("checkBtn").addEventListener("click", checkGrades);
