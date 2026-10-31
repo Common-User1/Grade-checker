@@ -131,7 +131,11 @@ function showStudents() {
       "<td>" + s.remark + "</td>" +
       "<td>" + s.letter + "</td>" +
       "<td>" + s.highest + "</td>" +
-      "<td></td>";
+      '<td><button type="button" class="delete-btn">Delete</button></td>';
+
+    row.querySelector(".delete-btn").addEventListener("click", function () {
+      deleteStudent(i);
+    });
 
     body.appendChild(row);
   }
@@ -154,6 +158,13 @@ function loadFromStorage() {
   if (saved !== null) {
     students = JSON.parse(saved);
   }
+}
+
+// Delete one student from the list
+function deleteStudent(index) {
+  students.splice(index, 1);
+  saveToStorage();
+  showStudents();
 }
 
 document.getElementById("checkBtn").addEventListener("click", checkGrades);
