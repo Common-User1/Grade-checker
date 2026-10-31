@@ -158,7 +158,10 @@ function showStudents() {
     let emptyRow = document.createElement("tr");
     emptyRow.innerHTML = '<td colspan="7" class="empty-message">No students found.</td>';
     body.appendChild(emptyRow);
+    
   }
+
+  showSummary();
 }
 
 // Check if a student matches the search and filter
@@ -188,6 +191,11 @@ function loadFromStorage() {
   if (saved !== null) {
     students = JSON.parse(saved);
   }
+}
+
+// Show the class summary
+function showSummary() {
+  document.getElementById("totalStudents").textContent = students.length;
 }
 
 // Delete one student from the list
