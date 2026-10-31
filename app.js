@@ -10,6 +10,7 @@ function checkGrades() {
 
   if (name === "" || grade1 === "" || grade2 === "" || grade3 === "") {
     result.innerHTML = "Error: please fill in all the boxes";
+    result.className = "failed";
     return;
   }
 
@@ -17,6 +18,7 @@ function checkGrades() {
 
     if (!isValid(grades)) {
     result.innerHTML = "Error: grades must be from 0 to 100";
+    result.className = "failed";
     return;
   }
 
@@ -33,3 +35,8 @@ function checkGrades() {
     "Highest: " + highest;
 }
 
+  if (remark === "Passed") {
+    result.className = "passed";
+  } else {
+    result.className = "failed";
+  }

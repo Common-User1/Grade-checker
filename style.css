@@ -29,3 +29,14 @@ button {
 button:hover {
   background-color: #1f6391;
 }
+
+
+.passed {
+  color: #27ae60;
+  border-left: 5px solid #27ae60;
+}
+
+.failed {
+  color: #c0392b;
+  border-left: 5px solid #c0392b;
+}
