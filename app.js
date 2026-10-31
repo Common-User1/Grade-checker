@@ -327,6 +327,38 @@ function deleteStudent(index) {
   showStudents();
 }
 
+// Load a saved student into the form so it can be edited
+function editStudent(index) {
+  let s = students[index];
+
+  if (!s.subjectData) {
+    alert("This student was saved in an older version and cannot be edited. Please delete and add again.");
+    return;
+  }
+
+  editingIndex = index;
+
+  document.getElementById("studentName").value = s.name;
+  document.getElementById("subjects").innerHTML = "";
+
+  for (let i = 0; i < s.subjectData.length; i++) {
+    addSubjectRow();
+
+    let rows = document.querySelectorAll(".subject-row");
+    let row = rows[rows.length - 1];
+
+    row.querySelector(".subject-name").value = s.subjectData[i].name;
+    row.querySelector(".subject-grade").value = s.subjectData[i].grade;
+    row.querySelector(".subject-units").value = s.subjectData[i].units;
+  }
+
+  document.getElementById("saveBtn").textContent = "Update Student";
+  document.getElementById("result").innerHTML = "";
+  document.getElementById("result").className = "";
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
 // Delete all saved students
 function clearStudents() {
   if (confirm("Delete all saved students?")) {
