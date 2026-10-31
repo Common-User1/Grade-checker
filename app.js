@@ -65,9 +65,11 @@ function checkGrades() {
 // Clear all inputs and the result
 function clearAll() {
   document.getElementById("studentName").value = "";
-  document.getElementById("grade1").value = "";
-  document.getElementById("grade2").value = "";
-  document.getElementById("grade3").value = "";
+
+  document.getElementById("subjects").innerHTML = "";
+  addSubjectRow();
+  addSubjectRow();
+  addSubjectRow();
 
   let result = document.getElementById("result");
   result.innerHTML = "";
