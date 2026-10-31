@@ -235,3 +235,41 @@ tr:hover td {
   text-align: center;
   color: #7f8c8d;
 }
+
+.summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.summary-box {
+  background-color: #f5f8fb;
+  border-radius: 8px;
+  padding: 14px;
+  text-align: center;
+  border-top: 4px solid #2980b9;
+}
+
+.summary-box:nth-child(3) {
+  border-top-color: #27ae60;
+}
+
+.summary-box:nth-child(4) {
+  border-top-color: #c0392b;
+}
+
+.summary-number {
+  display: block;
+  font-size: 24px;
+  font-weight: bold;
+  color: #2c3e50;
+  overflow-wrap: anywhere;
+}
+
+.summary-label {
+  display: block;
+  font-size: 14px;
+  color: #7f8c8d;
+  margin-top: 4px;
+}
