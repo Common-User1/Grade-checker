@@ -8,6 +8,11 @@ function checkGrades() {
   let grade2 = document.getElementById("grade2").value;
   let grade3 = document.getElementById("grade3").value;
 
+  if (name === "" || grade1 === "" || grade2 === "" || grade3 === "") {
+    result.innerHTML = "Error: please fill in all the boxes";
+    return;
+  }
+
   let grades = [Number(grade1), Number(grade2), Number(grade3)];
 
     if (!isValid(grades)) {
@@ -19,7 +24,6 @@ function checkGrades() {
   let remark = getRemark(average);
   let letter = getLetter(average);
   let highest = getHighest(grades);
-
 
     result.innerHTML =
     "Name: " + name + "<br>" +
