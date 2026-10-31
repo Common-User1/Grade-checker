@@ -19,17 +19,23 @@ function checkGrades() {
   let result = document.getElementById("result");
 
   let name = document.getElementById("studentName").value;
-  let grade1 = document.getElementById("grade1").value;
-  let grade2 = document.getElementById("grade2").value;
-  let grade3 = document.getElementById("grade3").value;
+  let gradeBoxes = document.querySelectorAll(".subject-grade");
 
-  if (name === "" || grade1 === "" || grade2 === "" || grade3 === "") {
+  let grades = [];
+  let hasEmpty = name === "";
+
+  for (let i = 0; i < gradeBoxes.length; i++) {
+    if (gradeBoxes[i].value === "") {
+      hasEmpty = true;
+    }
+    grades.push(Number(gradeBoxes[i].value));
+  }
+
+  if (hasEmpty || grades.length === 0) {
     result.innerHTML = "Error: please fill in all the boxes";
     result.className = "failed";
     return;
   }
-
-  let grades = [Number(grade1), Number(grade2), Number(grade3)];
 
   if (!isValid(grades)) {
     result.innerHTML = "Error: grades must be from 0 to 100";
