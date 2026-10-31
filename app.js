@@ -9,7 +9,7 @@ function checkGrades() {
   let grade3 = document.getElementById("grade3").value;
 
   let grades = [Number(grade1), Number(grade2), Number(grade3)];
-  
+
     if (!isValid(grades)) {
     result.innerHTML = "Error: grades must be from 0 to 100";
     return;
@@ -20,7 +20,6 @@ function checkGrades() {
   let letter = getLetter(average);
   let highest = getHighest(grades);
 
-  let result = document.getElementById("result");
 
     result.innerHTML =
     "Name: " + name + "<br>" +
