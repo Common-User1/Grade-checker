@@ -3,6 +3,10 @@
 // List of saved students
 let students = [];
 
+// Current sort column and direction
+let sortColumn = "";
+let sortDirection = "asc";
+
 // Add a new subject row (subject name + grade)
 function addSubjectRow() {
   let container = document.getElementById("subjects");
@@ -249,6 +253,48 @@ function showSummary() {
   document.getElementById("passedCount").textContent = passed;
   document.getElementById("failedCount").textContent = failed;
   document.getElementById("topStudent").textContent = topName;
+}
+
+// Sort the students list by a column
+function sortStudents(column) {
+  if (sortColumn === column) {
+    if (sortDirection === "asc") {
+      sortDirection = "desc";
+    } else {
+      sortDirection = "asc";
+    }
+  } else {
+    sortColumn = column;
+    sortDirection = "asc";
+  }
+
+  students.sort(function (a, b) {
+    let first = a[column];
+    let second = b[column];
+
+    if (column === "average" || column === "highest") {
+      first = Number(first);
+      second = Number(second);
+    } else {
+      first = String(first).toLowerCase();
+      second = String(second).toLowerCase();
+    }
+
+    let order = 0;
+    if (first < second) {
+      order = -1;
+    } else if (first > second) {
+      order = 1;
+    }
+
+    if (sortDirection === "desc") {
+      order = -order;
+    }
+
+    return order;
+  });
+
+  showStudents();
 }
 
 // Delete one student from the list
