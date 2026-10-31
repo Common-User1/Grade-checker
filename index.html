@@ -2,46 +2,60 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Interactive Grade Checker</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Grade Checker</h1>
+  <div class="container">
 
-  <label>Student name:</label>
-  <input type="text" id="studentName">
+    <header>
+      <h1>Grade Checker</h1>
+      <p class="subtitle">Type the grades of a student and see the result.</p>
+    </header>
 
-  <br><br>
-  <h3>Subjects</h3>
-  <div id="subjects"></div>
-  <button id="addSubjectBtn">Add Subject</button>
+    <section class="card">
+      <h2>Student Information</h2>
 
-  <br><br>
-  <button id="checkBtn">Check Grades</button>
-  <button id="saveBtn">Save Student</button>
-  <button id="clearBtn">Clear</button>
+      <label for="studentName">Student name</label>
+      <input type="text" id="studentName" placeholder="Example: Juan Dela Cruz">
 
-  <div id="result"></div>
+      <h3>Subjects</h3>
+      <div id="subjects"></div>
+      <button id="addSubjectBtn">Add Subject</button>
 
-  <h2>Saved Students</h2>
-  <table id="studentsTable">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Subjects</th>
-        <th>Average</th>
-        <th>Remark</th>
-        <th>Letter</th>
-        <th>Highest</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody id="studentsBody"></tbody>
-  </table>
+      <div class="actions">
+        <button id="checkBtn">Check Grades</button>
+        <button id="saveBtn">Save Student</button>
+        <button id="clearBtn">Clear</button>
+      </div>
 
-  <br>
-  <button id="clearStudentsBtn">Clear All Students</button>
+      <div id="result"></div>
+    </section>
+
+    <section class="card">
+      <h2>Saved Students</h2>
+
+      <div class="table-wrap">
+        <table id="studentsTable">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Subjects</th>
+              <th>Average</th>
+              <th>Remark</th>
+              <th>Letter</th>
+              <th>Highest</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="studentsBody"></tbody>
+        </table>
+      </div>
+
+      <button id="clearStudentsBtn">Clear All Students</button>
+    </section>
+
+  </div>
 
   <script src="grade.js"></script>
   <script src="app.js"></script>
