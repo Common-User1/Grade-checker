@@ -1,5 +1,7 @@
 // App script: connects the page to the grade functions
 
+// List of saved students
+let students = [];
 
 // Add a new subject row (subject name + grade)
 function addSubjectRow() {
@@ -19,14 +21,17 @@ function addSubjectRow() {
 
   container.appendChild(row);
 }
+
 // Read the inputs and check the grades
 function checkGrades() {
   let result = document.getElementById("result");
 
   let name = document.getElementById("studentName").value;
   let gradeBoxes = document.querySelectorAll(".subject-grade");
+  let nameBoxes = document.querySelectorAll(".subject-name");
 
   let grades = [];
+  let subjectList = [];
   let hasEmpty = name === "";
 
   for (let i = 0; i < gradeBoxes.length; i++) {
@@ -34,18 +39,24 @@ function checkGrades() {
       hasEmpty = true;
     }
     grades.push(Number(gradeBoxes[i].value));
+
+    let subjectName = nameBoxes[i].value;
+    if (subjectName === "") {
+      subjectName = "Subject " + (i + 1);
+    }
+    subjectList.push(subjectName + ": " + gradeBoxes[i].value);
   }
 
   if (hasEmpty || grades.length === 0) {
     result.innerHTML = "Error: please fill in all the boxes";
     result.className = "failed";
-    return;
+    return null;
   }
 
   if (!isValid(grades)) {
     result.innerHTML = "Error: grades must be from 0 to 100";
     result.className = "failed";
-    return;
+    return null;
   }
 
   let average = computeAverage(grades);
@@ -65,20 +76,27 @@ function checkGrades() {
   } else {
     result.className = "failed";
   }
+
+  return {
+    name: name,
+    subjects: subjectList.join(", "),
+    average: average.toFixed(2),
+    remark: remark,
+    letter: letter,
+    highest: highest
+  };
 }
 
-// Clear all inputs and the result
-function clearAll() {
-  document.getElementById("studentName").value = "";
+// Save the current student to the list
+function saveStudent() {
+  let student = checkGrades();
 
-  document.getElementById("subjects").innerHTML = "";
-  addSubjectRow();
-  addSubjectRow();
-  addSubjectRow();
+  if (student === null) {
+    return;
+  }
 
-  let result = document.getElementById("result");
-  result.innerHTML = "";
-  result.className = "";
+  students.push(student);
+  console.log(students);
 }
 
 document.getElementById("checkBtn").addEventListener("click", checkGrades);
