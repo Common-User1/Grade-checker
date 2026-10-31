@@ -96,7 +96,7 @@ function saveStudent() {
   }
 
   students.push(student);
-  console.log(students);
+  showStudents();
 }
 
 
@@ -112,6 +112,28 @@ function clearAll() {
   let result = document.getElementById("result");
   result.innerHTML = "";
   result.className = "";
+}
+
+// Show all saved students in the table
+function showStudents() {
+  let body = document.getElementById("studentsBody");
+  body.innerHTML = "";
+
+  for (let i = 0; i < students.length; i++) {
+    let s = students[i];
+    let row = document.createElement("tr");
+
+    row.innerHTML =
+      "<td>" + s.name + "</td>" +
+      "<td>" + s.subjects + "</td>" +
+      "<td>" + s.average + "</td>" +
+      "<td>" + s.remark + "</td>" +
+      "<td>" + s.letter + "</td>" +
+      "<td>" + s.highest + "</td>" +
+      "<td></td>";
+
+    body.appendChild(row);
+  }
 }
 
 document.getElementById("checkBtn").addEventListener("click", checkGrades);
