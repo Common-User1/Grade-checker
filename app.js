@@ -10,7 +10,13 @@ function checkGrades() {
 
   let grades = [Number(grade1), Number(grade2), Number(grade3)];
 
-  console.log(name, grades);
+  let average = computeAverage(grades);
+
+  let result = document.getElementById("result");
+
+  result.innerHTML =
+    "Name: " + name + "<br>" +
+    "Average: " + average.toFixed(2);
 }
 
 
