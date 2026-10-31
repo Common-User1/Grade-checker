@@ -16,13 +16,16 @@ function checkGrades() {
 
   let letter = getLetter(average);
 
+  let highest = getHighest(grades);
+
   let result = document.getElementById("result");
 
     result.innerHTML =
     "Name: " + name + "<br>" +
     "Average: " + average.toFixed(2) + "<br>" +
     "Remark: " + remark + "<br>" +
-    "Letter: " + letter;
+    "Letter: " + letter + "<br>" +
+    "Highest: " + highest;
 }
 
 
