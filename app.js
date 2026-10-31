@@ -99,8 +99,24 @@ function saveStudent() {
   console.log(students);
 }
 
+
+// Clear all inputs and the result
+function clearAll() {
+  document.getElementById("studentName").value = "";
+
+  document.getElementById("subjects").innerHTML = "";
+  addSubjectRow();
+  addSubjectRow();
+  addSubjectRow();
+
+  let result = document.getElementById("result");
+  result.innerHTML = "";
+  result.className = "";
+}
+
 document.getElementById("checkBtn").addEventListener("click", checkGrades);
 document.getElementById("clearBtn").addEventListener("click", clearAll);
+document.getElementById("saveBtn").addEventListener("click", saveStudent);
 
 document.getElementById("addSubjectBtn").addEventListener("click", addSubjectRow);
 
