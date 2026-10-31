@@ -199,14 +199,23 @@ function showSummary() {
   let sum = 0;
   let passed = 0;
   let failed = 0;
+  let topName = "-";
+  let topAverage = -1;
 
   for (let i = 0; i < students.length; i++) {
-    sum = sum + Number(students[i].average);
+    let average = Number(students[i].average);
+
+    sum = sum + average;
 
     if (students[i].remark === "Passed") {
       passed = passed + 1;
     } else {
       failed = failed + 1;
+    }
+
+    if (average > topAverage) {
+      topAverage = average;
+      topName = students[i].name;
     }
   }
 
@@ -219,6 +228,7 @@ function showSummary() {
   document.getElementById("classAverage").textContent = classAverage.toFixed(2);
   document.getElementById("passedCount").textContent = passed;
   document.getElementById("failedCount").textContent = failed;
+  document.getElementById("topStudent").textContent = topName;
 }
 
 // Delete one student from the list
