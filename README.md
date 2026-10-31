@@ -2,6 +2,12 @@
 
 This is a web page that checks the grades of students. The user types the student name and the subjects with grades, then the page shows the average, remark, letter grade, and highest grade. The user can also save many students in a list.
 
+## Live Demo
+
+https://common-user1.github.io/Grade-checker/
+
+![Screenshot of the Grade Checker](screenshot.png)
+
 ## How to run
 
 1. Download or clone this repository.
