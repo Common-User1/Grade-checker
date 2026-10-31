@@ -331,3 +331,11 @@ showStudents();
 document.getElementById("clearStudentsBtn").addEventListener("click", clearStudents);
 document.getElementById("searchBox").addEventListener("input", showStudents);
 document.getElementById("filterSelect").addEventListener("change", showStudents);
+
+let sortHeadings = document.querySelectorAll("th.sortable");
+
+for (let i = 0; i < sortHeadings.length; i++) {
+  sortHeadings[i].addEventListener("click", function () {
+    sortStudents(sortHeadings[i].dataset.column);
+  });
+}
