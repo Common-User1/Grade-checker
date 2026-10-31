@@ -53,25 +53,3 @@ function getHighest(list) {
   return highest;
 }
 
-// ----- Data -----
-
-let students = [
-  { name: "Juan", grades: [85, 90, 78] },
-  { name: "Maria", grades: [92, 88, 95] },
-  { name: "Pedro", grades: [70, 65, 72] }
-];
-
-// ----- Main -----
-
-students.forEach(function (student) {
-  console.log("----------");
-  if (isValid(student.grades)) {
-    console.log("Name: " + student.name);
-    console.log("Average: " + computeAverage(student.grades));
-    console.log("Remark: " + getRemark(computeAverage(student.grades)));
-    console.log("Letter: " + getLetter(computeAverage(student.grades)));
-    console.log("Highest: " + getHighest(student.grades));
-  } else {
-    console.log("Error: invalid grade for " + student.name);
-  }
-});
