@@ -210,3 +210,5 @@ loadFromStorage();
 showStudents();
 
 document.getElementById("clearStudentsBtn").addEventListener("click", clearStudents);
+document.getElementById("searchBox").addEventListener("input", showStudents);
+document.getElementById("filterSelect").addEventListener("change", showStudents);
