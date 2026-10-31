@@ -122,6 +122,9 @@ function showStudents() {
 
   for (let i = 0; i < students.length; i++) {
     let s = students[i];
+      if (!matchesFilter(s)) {
+        continue;
+      }
     let row = document.createElement("tr");
 
     let badgeClass = "badge-failed";
