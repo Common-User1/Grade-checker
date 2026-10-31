@@ -10,7 +10,12 @@ function addSubjectRow() {
 
   row.innerHTML =
     '<input type="text" class="subject-name" placeholder="Subject">' +
-    '<input type="number" class="subject-grade" placeholder="Grade">';
+    '<input type="number" class="subject-grade" placeholder="Grade">' +
+    '<button type="button" class="remove-btn">X</button>';
+
+  row.querySelector(".remove-btn").addEventListener("click", function () {
+    row.remove();
+  });
 
   container.appendChild(row);
 }
