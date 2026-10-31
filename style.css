@@ -45,8 +45,10 @@ header {
 }
 
 input {
-  padding: 6px;
+  padding: 8px;
   font-size: 16px;
+  border: 1px solid #ccd3da;
+  border-radius: 6px;
 }
 
 button {
@@ -55,6 +57,7 @@ button {
   background-color: #2980b9;
   color: white;
   border: none;
+  border-radius: 6px;
   cursor: pointer;
 }
 
@@ -62,19 +65,71 @@ button:hover {
   background-color: #1f6391;
 }
 
-
 .passed {
-  color: #27ae60;
+  color: #1e8449;
+  background-color: #eafaf1;
   border-left: 5px solid #27ae60;
 }
 
 .failed {
-  color: #c0392b;
+  color: #922b21;
+  background-color: #fdedec;
   border-left: 5px solid #c0392b;
 }
 
-
 #clearBtn {
   background-color: #7f8c8d;
-  margin-left: 8px;
+}
+
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+#studentName {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.subject-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.subject-row input {
+  min-width: 0;
+}
+
+.subject-name {
+  flex: 2;
+}
+
+.subject-grade {
+  flex: 1;
+}
+
+.remove-btn {
+  background-color: #e74c3c;
+  padding: 6px 12px;
+}
+
+.remove-btn:hover {
+  background-color: #c0392b;
+}
+
+#addSubjectBtn {
+  background-color: #16a085;
+  margin-top: 4px;
+}
+
+.actions {
+  margin-top: 20px;
+}
+
+.actions button {
+  margin-right: 8px;
+  margin-bottom: 8px;
 }
