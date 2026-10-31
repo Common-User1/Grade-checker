@@ -12,11 +12,17 @@ function checkGrades() {
 
   let average = computeAverage(grades);
 
+  let remark = getRemark(average);
+
+  let letter = getLetter(average);
+
   let result = document.getElementById("result");
 
-  result.innerHTML =
+    result.innerHTML =
     "Name: " + name + "<br>" +
-    "Average: " + average.toFixed(2);
+    "Average: " + average.toFixed(2) + "<br>" +
+    "Remark: " + remark + "<br>" +
+    "Letter: " + letter;
 }
 
 
