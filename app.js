@@ -195,7 +195,30 @@ function loadFromStorage() {
 
 // Show the class summary
 function showSummary() {
-  document.getElementById("totalStudents").textContent = students.length;
+  let total = students.length;
+  let sum = 0;
+  let passed = 0;
+  let failed = 0;
+
+  for (let i = 0; i < students.length; i++) {
+    sum = sum + Number(students[i].average);
+
+    if (students[i].remark === "Passed") {
+      passed = passed + 1;
+    } else {
+      failed = failed + 1;
+    }
+  }
+
+  let classAverage = 0;
+  if (total > 0) {
+    classAverage = sum / total;
+  }
+
+  document.getElementById("totalStudents").textContent = total;
+  document.getElementById("classAverage").textContent = classAverage.toFixed(2);
+  document.getElementById("passedCount").textContent = passed;
+  document.getElementById("failedCount").textContent = failed;
 }
 
 // Delete one student from the list
