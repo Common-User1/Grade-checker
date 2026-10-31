@@ -70,3 +70,10 @@ function clearAll() {
 
 document.getElementById("checkBtn").addEventListener("click", checkGrades);
 document.getElementById("clearBtn").addEventListener("click", clearAll);
+
+document.getElementById("addSubjectBtn").addEventListener("click", addSubjectRow);
+
+// Start with 3 subject rows
+addSubjectRow();
+addSubjectRow();
+addSubjectRow();
