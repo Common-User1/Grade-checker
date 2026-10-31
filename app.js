@@ -12,3 +12,6 @@ function checkGrades() {
 
   console.log(name, grades);
 }
+
+
+document.getElementById("checkBtn").addEventListener("click", checkGrades);
