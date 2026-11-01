@@ -28,13 +28,6 @@ function addSubjectRow() {
   container.appendChild(row);
 }
 
-document.getElementById("addSubjectBtn").addEventListener("click", addSubjectRow);
-document.getElementById("checkBtn").addEventListener("click", checkGrades);
-document.getElementById("saveBtn").addEventListener("click", saveStudent);
-document.getElementById("clearBtn").addEventListener("click", clearAll);
-document.getElementById("clearStudentsBtn").addEventListener("click", clearStudents);
-document.getElementById("cancelEditBtn").addEventListener("click", clearAll);
-
 // Read the inputs and check the grades
 function checkGrades() {
   let result = document.getElementById("result");
@@ -104,11 +97,11 @@ function checkGrades() {
 
   let subjectLines = "";
   for (let i = 0; i < subjectData.length; i++) {
-    subjectLines = subjectLines + subjectData[i].name + ": " + subjectData[i].finalGrade.toFixed(2) + "<br>";
+    subjectLines = subjectLines + escapeHtml(subjectData[i].name) + ": " + subjectData[i].finalGrade.toFixed(2) + "<br>";
   }
 
   result.innerHTML =
-    "Name: " + name + " (Grade " + gradeLevel + ")<br><br>" +
+    "Name: " + escapeHtml(name) + " (Grade " + gradeLevel + ")<br><br>" +
     "Final grades:<br>" + subjectLines + "<br>" +
     "General Average: " + generalAverage.toFixed(2) + "<br>" +
     "Remark: " + remark + "<br>" +
@@ -191,9 +184,9 @@ function showStudents() {
     }
 
     row.innerHTML =
-      "<td>" + s.name + "</td>" +
+      "<td>" + escapeHtml(s.name) + "</td>" +
       "<td>" + s.gradeLevel + "</td>" +
-      "<td>" + s.subjects + "</td>" +
+      "<td>" + escapeHtml(s.subjects) + "</td>" +
       "<td>" + s.average + "</td>" +
       "<td>" + s.honors + "</td>" +
       '<td><span class="badge ' + badgeClass + '">' + s.remark + "</span></td>" +
@@ -308,9 +301,6 @@ function editStudent(index) {
 
   document.getElementById("saveBtn").textContent = "Update Student";
   document.getElementById("cancelEditBtn").classList.remove("hidden");
-  document.getElementById("searchBox").addEventListener("input", showStudents);
-  document.getElementById("gradeFilter").addEventListener("change", showStudents);
-  document.getElementById("filterSelect").addEventListener("change", showStudents);
   document.getElementById("result").innerHTML = "";
   document.getElementById("result").className = "";
 
@@ -357,6 +347,16 @@ function showSummary() {
     document.getElementById("classAverage").textContent = "0";
   }
 }
+
+document.getElementById("addSubjectBtn").addEventListener("click", addSubjectRow);
+document.getElementById("checkBtn").addEventListener("click", checkGrades);
+document.getElementById("saveBtn").addEventListener("click", saveStudent);
+document.getElementById("clearBtn").addEventListener("click", clearAll);
+document.getElementById("clearStudentsBtn").addEventListener("click", clearStudents);
+document.getElementById("cancelEditBtn").addEventListener("click", clearAll);
+document.getElementById("searchBox").addEventListener("input", showStudents);
+document.getElementById("gradeFilter").addEventListener("change", showStudents);
+document.getElementById("filterSelect").addEventListener("change", showStudents);
 
 // Start with 5 subject rows
 for (let i = 0; i < 5; i++) {
