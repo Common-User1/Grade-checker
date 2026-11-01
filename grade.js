@@ -65,3 +65,33 @@ function computeWeightedAverage(grades, units) {
 
   return totalPoints / totalUnits;
 }
+
+
+// Round a number to 2 decimal places
+function roundTwo(value) {
+  return Math.round(value * 100) / 100;
+}
+
+// Convert a percent grade to the 1.0 to 5.0 equivalent
+function getEquivalent(grade) {
+  if (grade >= 97) {
+    return 1.0;
+  } else if (grade >= 94) {
+    return 1.25;
+  } else if (grade >= 91) {
+    return 1.5;
+  } else if (grade >= 88) {
+    return 1.75;
+  } else if (grade >= 85) {
+    return 2.0;
+  } else if (grade >= 82) {
+    return 2.25;
+  } else if (grade >= 79) {
+    return 2.5;
+  } else if (grade >= 76) {
+    return 2.75;
+  } else if (grade >= 75) {
+    return 3.0;
+  }
+  return 5.0;
+}
