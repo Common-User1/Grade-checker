@@ -342,6 +342,20 @@ function showArrows() {
   }
 }
 
+// Switch between light and dark mode
+function toggleTheme() {
+  let root = document.documentElement;
+  let themeBtn = document.getElementById("themeBtn");
+
+  if (root.getAttribute("data-theme") === "dark") {
+    root.removeAttribute("data-theme");
+    themeBtn.textContent = "Dark Mode";
+  } else {
+    root.setAttribute("data-theme", "dark");
+    themeBtn.textContent = "Light Mode";
+  }
+}
+
 // Delete one student from the list
 function deleteStudent(index) {
   if (editingIndex !== -1) {
@@ -426,3 +440,5 @@ for (let i = 0; i < sortHeadings.length; i++) {
     sortStudents(sortHeadings[i].dataset.column);
   });
 }
+
+document.getElementById("themeBtn").addEventListener("click", toggleTheme);

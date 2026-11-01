@@ -364,3 +364,8 @@ footer a {
   --badge-passed-bg: #1d4a2e;
   --badge-failed-bg: #4a1f1f;
 }
+
+.theme-btn {
+  background-color: #34495e;
+  margin-top: 8px;
+}
