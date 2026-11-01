@@ -340,3 +340,27 @@ footer a {
     margin-right: 0;
   }
 }
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #121820;
+  --card-bg: #1c2530;
+  --text: #e6edf3;
+  --text-muted: #9aa7b4;
+  --border: #3a4756;
+  --input-bg: #243040;
+  --primary: #3498db;
+  --primary-hover: #2a7fb8;
+  --shadow: rgba(0, 0, 0, 0.5);
+  --summary-bg: #243040;
+  --table-head-bg: #0f151c;
+  --table-head-hover: #2a3645;
+  --row-border: #2f3b49;
+  --row-hover: #243040;
+  --passed-text: #58d68d;
+  --passed-bg: #16301f;
+  --failed-text: #f1948a;
+  --failed-bg: #3a1a1a;
+  --badge-passed-bg: #1d4a2e;
+  --badge-failed-bg: #4a1f1f;
+}
