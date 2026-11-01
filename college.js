@@ -369,42 +369,6 @@ function showArrows() {
   }
 }
 
-// Switch between light and dark mode
-function toggleTheme() {
-  let root = document.documentElement;
-
-  if (root.getAttribute("data-theme") === "dark") {
-    setTheme("light");
-  } else {
-    setTheme("dark");
-  }
-}
-
-// Apply a theme and save it in the browser
-function setTheme(theme) {
-  let root = document.documentElement;
-  let themeBtn = document.getElementById("themeBtn");
-
-  if (theme === "dark") {
-    root.setAttribute("data-theme", "dark");
-    themeBtn.textContent = "Light Mode";
-  } else {
-    root.removeAttribute("data-theme");
-    themeBtn.textContent = "Dark Mode";
-  }
-
-  localStorage.setItem("theme", theme);
-}
-
-// Load the saved theme when the page opens
-function loadTheme() {
-  let saved = localStorage.getItem("theme");
-
-  if (saved === "dark") {
-    setTheme("dark");
-  }
-}
-
 // Delete one student from the list
 function deleteStudent(index) {
   if (editingIndex !== -1) {
@@ -490,8 +454,3 @@ for (let i = 0; i < sortHeadings.length; i++) {
     sortStudents(sortHeadings[i].dataset.column);
   });
 }
-
-document.getElementById("themeBtn").addEventListener("click", toggleTheme);
-
-// Load the saved theme
-loadTheme();

@@ -4,18 +4,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>High School Grade Checker</title>
-  <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/svg+xml" href="logo.svg">
+  <link rel="stylesheet" href="style.css">
+  <script src="theme.js"></script>
 </head>
-<body>
-  <div class="container">
+<body class="page-hs">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">
+        <img src="logo.svg" alt="" class="brand-logo">
+        <span>Grade Checker</span>
+      </a>
+      <nav class="nav">
+        <a href="index.html">Dashboard</a>
+        <a href="highschool.html" aria-current="page">High School</a>
+        <a href="college.html">College</a>
+      </nav>
+      <button id="themeBtn" class="theme-btn" type="button">Dark Mode</button>
+    </div>
+  </header>
 
-    <header>
-      <a class="back-link" href="index.html">&larr; Back to dashboard</a>
-      <img src="logo.svg" alt="Grade Checker logo" class="logo logo-small">
-      <h1>High School Grade Checker</h1>
-      <p class="subtitle">Type the quarterly grades of a student and see the final grades, general average, and honors.</p>
-    </header>
+  <main class="container">
+
+    <div class="page-head">
+      <h1>High School</h1>
+      <p>Type the quarterly grades of each subject. The page shows the final grade of each subject, the general average, and the honors.</p>
+    </div>
 
     <section class="card">
       <h2>Student Information</h2>
@@ -38,8 +52,16 @@
       </div>
 
       <h3>Subjects</h3>
+      <div class="subject-head">
+        <span>Subject</span>
+        <span>Q1</span>
+        <span>Q2</span>
+        <span>Q3</span>
+        <span>Q4</span>
+        <span></span>
+      </div>
       <div id="subjects"></div>
-      <button id="addSubjectBtn">Add Subject</button>
+      <button id="addSubjectBtn" type="button">Add Subject</button>
 
       <div class="actions">
         <button id="checkBtn">Check Grades</button>
@@ -118,7 +140,12 @@
       <button id="clearStudentsBtn">Clear All Students</button>
     </section>
 
-  </div>
+  </main>
+
+  <footer class="footer">
+    <span>Grade Checker by Common-User1</span>
+    <a href="https://github.com/Common-User1/Grade-checker" target="_blank" rel="noopener">View on GitHub</a>
+  </footer>
 
   <script src="grade.js"></script>
   <script src="highschool.js"></script>

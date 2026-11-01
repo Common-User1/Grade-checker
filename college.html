@@ -3,31 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="A simple web page that checks student grades and saves a list of students.">
   <title>College Grade Checker</title>
-  <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/svg+xml" href="logo.svg">
+  <link rel="stylesheet" href="style.css">
+  <script src="theme.js"></script>
 </head>
-<body>
-  <div class="container">
+<body class="page-college">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">
+        <img src="logo.svg" alt="" class="brand-logo">
+        <span>Grade Checker</span>
+      </a>
+      <nav class="nav">
+        <a href="index.html">Dashboard</a>
+        <a href="highschool.html">High School</a>
+        <a href="college.html" aria-current="page">College</a>
+      </nav>
+      <button id="themeBtn" class="theme-btn" type="button">Dark Mode</button>
+    </div>
+  </header>
 
-    <header>
-      <a class="back-link" href="index.html">&larr; Back to dashboard</a>
-      <img src="logo.svg" alt="Grade Checker logo" class="logo logo-small">
-      <h1>College Grade Checker</h1>
-      <p class="subtitle">Type the grades of a student and see the result.</p>
-      <button id="themeBtn" class="theme-btn">Dark Mode</button>
-    </header>
+  <main class="container">
+
+    <div class="page-head">
+      <h1>College</h1>
+      <p>Type the units, midterm grade, and final term grade of each subject. The page shows the GWA of each term and the overall GWA, with the 1.0 to 5.0 equivalent.</p>
+    </div>
 
     <section class="card">
       <h2>Student Information</h2>
 
-      <label for="studentName">Student name</label>
-      <input type="text" id="studentName" placeholder="Example: Juan Dela Cruz">
+      <div class="field">
+        <label for="studentName">Student name</label>
+        <input type="text" id="studentName" placeholder="Example: Juan Dela Cruz">
+      </div>
 
       <h3>Subjects</h3>
+      <div class="subject-head">
+        <span>Subject</span>
+        <span>Units</span>
+        <span>Midterm</span>
+        <span>Final Term</span>
+        <span></span>
+      </div>
       <div id="subjects"></div>
-      <button id="addSubjectBtn">Add Subject</button>
+      <button id="addSubjectBtn" type="button">Add Subject</button>
 
       <div class="actions">
         <button id="checkBtn">Check Grades</button>
@@ -42,7 +63,6 @@
     <section class="card">
       <h2>Saved Students</h2>
 
-      
       <div class="summary">
         <div class="summary-box">
           <span class="summary-number" id="totalStudents">0</span>
@@ -96,11 +116,11 @@
       <button id="clearStudentsBtn">Clear All Students</button>
     </section>
 
-  </div>
+  </main>
 
-  <footer>
-    <p>Grade Checker by Common-User1</p>
-    <p><a href="https://github.com/Common-User1/Grade-checker" target="_blank" rel="noopener">View on GitHub</a></p>
+  <footer class="footer">
+    <span>Grade Checker by Common-User1</span>
+    <a href="https://github.com/Common-User1/Grade-checker" target="_blank" rel="noopener">View on GitHub</a>
   </footer>
 
   <script src="grade.js"></script>

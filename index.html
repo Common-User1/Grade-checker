@@ -5,37 +5,70 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="A grade checker for high school and college students.">
   <title>Grade Checker</title>
-  <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/svg+xml" href="logo.svg">
+  <link rel="stylesheet" href="style.css">
+  <script src="theme.js"></script>
 </head>
-<body>
-  <div class="container">
+<body class="page-home">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">
+        <img src="logo.svg" alt="" class="brand-logo">
+        <span>Grade Checker</span>
+      </a>
+      <nav class="nav">
+        <a href="index.html" aria-current="page">Dashboard</a>
+        <a href="highschool.html">High School</a>
+        <a href="college.html">College</a>
+      </nav>
+      <button id="themeBtn" class="theme-btn" type="button">Dark Mode</button>
+    </div>
+  </header>
 
-    <header>
-      <img src="logo.svg" alt="Grade Checker logo" class="logo">
-      <h1>Grade Checker</h1>
-      <p class="subtitle">Choose the type of student to start.</p>
-    </header>
+  <main class="container">
 
-    <main class="choices">
-      <a class="choice-card" href="highschool.html">
+    <div class="page-head">
+      <h1>Choose a grade checker</h1>
+      <p>Pick the level of the student. Each one has its own grading rules and its own list of saved students.</p>
+    </div>
+
+    <div class="choices">
+
+      <section class="card choice">
         <h2>High School</h2>
-        <p>Quarterly grades from Q1 to Q4, final grade, general average, and honors.</p>
-        <span class="choice-link">Open</span>
-      </a>
+        <ul>
+          <li>Quarterly grades from Q1 to Q4</li>
+          <li>Final grade for each subject and the general average</li>
+          <li>Honors based on the general average</li>
+        </ul>
+        <div class="choice-meta">
+          <span class="saved-count" id="hsCount"></span>
+          <a class="button-link" href="highschool.html">Open High School</a>
+        </div>
+      </section>
 
-      <a class="choice-card" href="college.html">
+      <section class="card choice">
         <h2>College</h2>
-        <p>Midterm and final term grades with units, GWA, and the 1.0 to 5.0 equivalent.</p>
-        <span class="choice-link">Open</span>
-      </a>
-    </main>
+        <ul>
+          <li>Midterm and final term grades for each subject</li>
+          <li>Units, GWA, and the 1.0 to 5.0 equivalent</li>
+          <li>Overall GWA from both terms</li>
+        </ul>
+        <div class="choice-meta">
+          <span class="saved-count" id="collegeCount"></span>
+          <a class="button-link" href="college.html">Open College</a>
+        </div>
+      </section>
 
-    <footer>
-      <p>Grade Checker by Common-User1</p>
-      <p><a href="https://github.com/Common-User1/Grade-checker" target="_blank" rel="noopener">View on GitHub</a></p>
-    </footer>
+    </div>
 
-  </div>
+  </main>
+
+  <footer class="footer">
+    <span>Grade Checker by Common-User1</span>
+    <a href="https://github.com/Common-User1/Grade-checker" target="_blank" rel="noopener">View on GitHub</a>
+  </footer>
+
+  <script src="dashboard.js"></script>
 </body>
 </html>
