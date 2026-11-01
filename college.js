@@ -35,7 +35,7 @@ function addSubjectRow() {
 function checkGrades() {
   let result = document.getElementById("result");
 
-  let name = document.getElementById("studentName").value;
+  let name = document.getElementById("studentName").value.trim();
   let nameBoxes = document.querySelectorAll(".subject-name");
   let unitBoxes = document.querySelectorAll(".subject-units");
   let midtermBoxes = document.querySelectorAll(".subject-midterm");
@@ -61,7 +61,7 @@ function checkGrades() {
     finals.push(finalTerm);
     units.push(unit);
 
-    let subjectName = nameBoxes[i].value;
+    let subjectName = nameBoxes[i].value.trim();
     if (subjectName === "") {
       subjectName = "Subject " + (i + 1);
     }

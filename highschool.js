@@ -32,7 +32,7 @@ function addSubjectRow() {
 function checkGrades() {
   let result = document.getElementById("result");
 
-  let name = document.getElementById("studentName").value;
+  let name = document.getElementById("studentName").value.trim();
   let gradeLevel = document.getElementById("gradeLevel").value;
   let rows = document.querySelectorAll(".subject-row");
 
@@ -43,7 +43,7 @@ function checkGrades() {
   let hasEmpty = name === "";
 
   for (let i = 0; i < rows.length; i++) {
-    let subjectName = rows[i].querySelector(".subject-name").value;
+    let subjectName = rows[i].querySelector(".subject-name").value.trim();
     if (subjectName === "") {
       subjectName = "Subject " + (i + 1);
     }
