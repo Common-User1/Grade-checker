@@ -413,7 +413,7 @@ function deleteStudent(index) {
 function editStudent(index) {
   let s = students[index];
 
-  if (!s.subjectData) {
+  if (!s.subjectData || s.subjectData.length === 0 || s.subjectData[0].midterm === undefined) {
     alert("This student was saved in an older version and cannot be edited. Please delete and add again.");
     return;
   }
@@ -430,8 +430,9 @@ function editStudent(index) {
     let row = rows[rows.length - 1];
 
     row.querySelector(".subject-name").value = s.subjectData[i].name;
-    row.querySelector(".subject-grade").value = s.subjectData[i].grade;
     row.querySelector(".subject-units").value = s.subjectData[i].units;
+    row.querySelector(".subject-midterm").value = s.subjectData[i].midterm;
+    row.querySelector(".subject-final").value = s.subjectData[i].finalTerm;
   }
 
   document.getElementById("saveBtn").textContent = "Update Student";
