@@ -3,6 +3,9 @@
 // List of saved students
 let students = [];
 
+// Index of the student being edited (-1 means not editing)
+let editingIndex = -1;
+
 // Add a new subject row (subject name + four quarters)
 function addSubjectRow() {
   let container = document.getElementById("subjects");
@@ -30,6 +33,7 @@ document.getElementById("checkBtn").addEventListener("click", checkGrades);
 document.getElementById("saveBtn").addEventListener("click", saveStudent);
 document.getElementById("clearBtn").addEventListener("click", clearAll);
 document.getElementById("clearStudentsBtn").addEventListener("click", clearStudents);
+document.getElementById("cancelEditBtn").addEventListener("click", clearAll);
 
 // Read the inputs and check the grades
 function checkGrades() {
@@ -135,13 +139,21 @@ function saveStudent() {
     return;
   }
 
-  students.push(student);
+  if (editingIndex === -1) {
+    students.push(student);
+  } else {
+    students[editingIndex] = student;
+    clearAll();
+  }
+
   saveToStorage();
   showStudents();
 }
 
 // Clear all inputs and the result
 function clearAll() {
+  stopEditing();
+
   document.getElementById("studentName").value = "";
   document.getElementById("gradeLevel").value = "7";
 
@@ -176,7 +188,12 @@ function showStudents() {
       "<td>" + s.average + "</td>" +
       "<td>" + s.honors + "</td>" +
       '<td><span class="badge ' + badgeClass + '">' + s.remark + "</span></td>" +
-      '<td><button type="button" class="delete-btn">Delete</button></td>';
+      '<td><button type="button" class="edit-btn">Edit</button> ' +
+      '<button type="button" class="delete-btn">Delete</button></td>';
+
+    row.querySelector(".edit-btn").addEventListener("click", function () {
+      editStudent(i);
+    });
 
     row.querySelector(".delete-btn").addEventListener("click", function () {
       deleteStudent(i);
@@ -210,6 +227,10 @@ function loadFromStorage() {
 
 // Delete one student from the list
 function deleteStudent(index) {
+  if (editingIndex !== -1) {
+    clearAll();
+  }
+
   students.splice(index, 1);
   saveToStorage();
   showStudents();
@@ -218,10 +239,53 @@ function deleteStudent(index) {
 // Delete all saved students
 function clearStudents() {
   if (confirm("Delete all saved students?")) {
+    if (editingIndex !== -1) {
+      clearAll();
+    }
+
     students = [];
     saveToStorage();
     showStudents();
   }
+}
+
+// Load a saved student into the form so it can be edited
+function editStudent(index) {
+  let s = students[index];
+
+  editingIndex = index;
+
+  document.getElementById("studentName").value = s.name;
+  document.getElementById("gradeLevel").value = s.gradeLevel;
+  document.getElementById("subjects").innerHTML = "";
+
+  for (let i = 0; i < s.subjectData.length; i++) {
+    addSubjectRow();
+
+    let rows = document.querySelectorAll(".subject-row");
+    let row = rows[rows.length - 1];
+    let quarterBoxes = row.querySelectorAll(".quarter");
+
+    row.querySelector(".subject-name").value = s.subjectData[i].name;
+
+    for (let j = 0; j < quarterBoxes.length; j++) {
+      quarterBoxes[j].value = s.subjectData[i].quarters[j];
+    }
+  }
+
+  document.getElementById("saveBtn").textContent = "Update Student";
+  document.getElementById("cancelEditBtn").classList.remove("hidden");
+  document.getElementById("result").innerHTML = "";
+  document.getElementById("result").className = "";
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+// Go back to normal mode (not editing)
+function stopEditing() {
+  editingIndex = -1;
+  document.getElementById("saveBtn").textContent = "Save Student";
+  document.getElementById("cancelEditBtn").classList.add("hidden");
 }
 
 // Show the class summary
