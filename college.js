@@ -1,4 +1,4 @@
-// App script: connects the page to the grade functions
+// College script: connects the page to the grade functions
 
 // List of saved students
 let students = [];
@@ -10,7 +10,7 @@ let sortDirection = "asc";
 // Index of the student being edited (-1 means not editing)
 let editingIndex = -1;
 
-// Add a new subject row (subject name + grade)
+// Add a new subject row
 function addSubjectRow() {
   let container = document.getElementById("subjects");
 
@@ -101,7 +101,7 @@ function checkGrades() {
   let remark = getRemark(overallGwa);
 
   result.innerHTML =
-    "Name: " + name + "<br>" +
+    "Name: " + escapeHtml(name) + "<br>" +
     "Midterm GWA: " + midtermGwa.toFixed(2) + " (" + midtermEq.toFixed(2) + ")<br>" +
     "Final Term GWA: " + finalGwa.toFixed(2) + " (" + finalEq.toFixed(2) + ")<br>" +
     "Overall GWA: " + overallGwa.toFixed(2) + " (" + overallEq.toFixed(2) + ")<br>" +
@@ -205,8 +205,8 @@ function showStudents() {
     }
 
     row.innerHTML =
-      "<td>" + s.name + "</td>" +
-      "<td>" + s.subjects + "</td>" +
+      "<td>" + escapeHtml(s.name) + "</td>" +
+      "<td>" + escapeHtml(s.subjects) + "</td>" +
       "<td>" + midtermText + "</td>" +
       "<td>" + finalText + "</td>" +
       "<td>" + overallText + "</td>" +
@@ -244,6 +244,7 @@ function matchesFilter(student) {
 
   return nameMatches && remarkMatches;
 }
+
 // Save the students list in the browser
 function saveToStorage() {
   localStorage.setItem("students", JSON.stringify(students));
@@ -290,14 +291,12 @@ function showSummary() {
   }
 
   document.getElementById("totalStudents").textContent = total;
-  
-    if (total > 0) {
+  if (total > 0) {
     document.getElementById("classAverage").textContent =
       classAverage.toFixed(2) + " (" + getEquivalent(classAverage).toFixed(2) + ")";
   } else {
     document.getElementById("classAverage").textContent = "0";
   }
-
   document.getElementById("passedCount").textContent = passed;
   document.getElementById("failedCount").textContent = failed;
   document.getElementById("topStudent").textContent = topName;
@@ -436,7 +435,7 @@ document.getElementById("addSubjectBtn").addEventListener("click", addSubjectRow
 // Start with 3 subject rows
 addSubjectRow();
 addSubjectRow();
-addSubjectRow(); 
+addSubjectRow();
 
 // Load and show the saved students
 loadFromStorage();
