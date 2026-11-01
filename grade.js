@@ -1,7 +1,4 @@
-// Grade Checker
-// This program checks the grades of students
-
-// ----- Functions -----
+// Grade Checker functions
 
 // Compute the average of a list of grades
 function computeAverage(list) {
@@ -66,7 +63,6 @@ function computeWeightedAverage(grades, units) {
   return totalPoints / totalUnits;
 }
 
-
 // Round a number to 2 decimal places
 function roundTwo(value) {
   return Math.round(value * 100) / 100;
@@ -111,4 +107,14 @@ function getHonors(average, hasFailing) {
   }
 
   return "None";
+}
+
+// Make text safe to show inside HTML (tags like <b> are shown as plain text)
+function escapeHtml(text) {
+  return String(text)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 }
