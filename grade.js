@@ -95,3 +95,20 @@ function getEquivalent(grade) {
   }
   return 5.0;
 }
+
+// Get the honors based on the general average
+function getHonors(average, hasFailing) {
+  if (hasFailing) {
+    return "None";
+  }
+
+  if (average >= 98) {
+    return "With Highest Honors";
+  } else if (average >= 95) {
+    return "With High Honors";
+  } else if (average >= 90) {
+    return "With Honors";
+  }
+
+  return "None";
+}
