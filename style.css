@@ -1,3 +1,26 @@
+:root {
+  --bg: #eef2f7;
+  --card-bg: #ffffff;
+  --text: #2c3e50;
+  --text-muted: #7f8c8d;
+  --border: #ccd3da;
+  --input-bg: #ffffff;
+  --primary: #2980b9;
+  --primary-hover: #1f6391;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --summary-bg: #f5f8fb;
+  --table-head-bg: #2c3e50;
+  --table-head-hover: #3d566e;
+  --row-border: #e1e6eb;
+  --row-hover: #f5f8fb;
+  --passed-text: #1e8449;
+  --passed-bg: #eafaf1;
+  --failed-text: #922b21;
+  --failed-bg: #fdedec;
+  --badge-passed-bg: #d5f5e3;
+  --badge-failed-bg: #fadbd8;
+}
+
 body {
   font-family: "Segoe UI", Arial, sans-serif;
   background-color: #eef2f7;
