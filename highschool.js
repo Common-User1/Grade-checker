@@ -1,5 +1,8 @@
 // High School script: connects the page to the grade functions
 
+// List of saved students
+let students = [];
+
 // Add a new subject row (subject name + four quarters)
 function addSubjectRow() {
   let container = document.getElementById("subjects");
@@ -24,6 +27,8 @@ function addSubjectRow() {
 
 document.getElementById("addSubjectBtn").addEventListener("click", addSubjectRow);
 document.getElementById("checkBtn").addEventListener("click", checkGrades);
+document.getElementById("saveBtn").addEventListener("click", saveStudent);
+document.getElementById("clearBtn").addEventListener("click", clearAll);
 
 // Read the inputs and check the grades
 function checkGrades() {
@@ -121,7 +126,86 @@ function checkGrades() {
   };
 }
 
+// Save the current student to the list
+function saveStudent() {
+  let student = checkGrades();
+
+  if (student === null) {
+    return;
+  }
+
+  students.push(student);
+  saveToStorage();
+  showStudents();
+}
+
+// Clear all inputs and the result
+function clearAll() {
+  document.getElementById("studentName").value = "";
+  document.getElementById("gradeLevel").value = "7";
+
+  document.getElementById("subjects").innerHTML = "";
+  for (let i = 0; i < 5; i++) {
+    addSubjectRow();
+  }
+
+  let result = document.getElementById("result");
+  result.innerHTML = "";
+  result.className = "";
+}
+
+// Show all saved students in the table
+function showStudents() {
+  let body = document.getElementById("studentsBody");
+  body.innerHTML = "";
+
+  for (let i = 0; i < students.length; i++) {
+    let s = students[i];
+    let row = document.createElement("tr");
+
+    let badgeClass = "badge-failed";
+    if (s.remark === "Passed") {
+      badgeClass = "badge-passed";
+    }
+
+    row.innerHTML =
+      "<td>" + s.name + "</td>" +
+      "<td>" + s.gradeLevel + "</td>" +
+      "<td>" + s.subjects + "</td>" +
+      "<td>" + s.average + "</td>" +
+      "<td>" + s.honors + "</td>" +
+      '<td><span class="badge ' + badgeClass + '">' + s.remark + "</span></td>" +
+      "<td></td>";
+
+    body.appendChild(row);
+  }
+
+  if (students.length === 0) {
+    let emptyRow = document.createElement("tr");
+    emptyRow.innerHTML = '<td colspan="7" class="empty-message">No students saved yet.</td>';
+    body.appendChild(emptyRow);
+  }
+}
+
+// Save the students list in the browser
+function saveToStorage() {
+  localStorage.setItem("students_hs", JSON.stringify(students));
+}
+
+// Load the saved students when the page opens
+function loadFromStorage() {
+  let saved = localStorage.getItem("students_hs");
+
+  if (saved !== null) {
+    students = JSON.parse(saved);
+  }
+}
+
 // Start with 5 subject rows
 for (let i = 0; i < 5; i++) {
   addSubjectRow();
 }
+
+// Load and show the saved students
+loadFromStorage();
+showStudents();
