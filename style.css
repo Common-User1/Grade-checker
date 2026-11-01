@@ -377,6 +377,19 @@ footer a {
   text-decoration: underline;
 }
 
+.field {
+  margin-bottom: 16px;
+}
+
+select {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background-color: var(--input-bg);
+  color: var(--text);
+}
+
 @media (max-width: 600px) {
   body {
     padding: 10px;

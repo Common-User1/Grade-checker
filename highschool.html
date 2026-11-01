@@ -12,8 +12,41 @@
     <header>
       <a class="back-link" href="index.html">&larr; Back to dashboard</a>
       <h1>High School Grade Checker</h1>
-      <p class="subtitle">This page is coming soon.</p>
+      <p class="subtitle">Type the quarterly grades of a student and see the final grades, general average, and honors.</p>
     </header>
+
+    <section class="card">
+      <h2>Student Information</h2>
+
+      <div class="field">
+        <label for="studentName">Student name</label>
+        <input type="text" id="studentName" placeholder="Example: Maria Santos">
+      </div>
+
+      <div class="field">
+        <label for="gradeLevel">Grade level</label>
+        <select id="gradeLevel">
+          <option value="7">Grade 7</option>
+          <option value="8">Grade 8</option>
+          <option value="9">Grade 9</option>
+          <option value="10">Grade 10</option>
+          <option value="11">Grade 11</option>
+          <option value="12">Grade 12</option>
+        </select>
+      </div>
+
+      <h3>Subjects</h3>
+      <div id="subjects"></div>
+      <button id="addSubjectBtn">Add Subject</button>
+
+      <div class="actions">
+        <button id="checkBtn">Check Grades</button>
+        <button id="saveBtn">Save Student</button>
+        <button id="clearBtn">Clear</button>
+      </div>
+
+      <div id="result"></div>
+    </section>
 
   </div>
 </body>
