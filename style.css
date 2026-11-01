@@ -355,6 +355,22 @@ footer a {
   color: var(--primary);
   font-weight: bold;
 }
+.theme-btn {
+  background-color: #34495e;
+  margin-top: 8px;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: var(--primary);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
 
 @media (max-width: 600px) {
   body {
@@ -400,19 +416,3 @@ footer a {
   --badge-failed-bg: #4a1f1f;
 }
 
-.theme-btn {
-  background-color: #34495e;
-  margin-top: 8px;
-}
-
-.back-link {
-  display: inline-block;
-  margin-bottom: 8px;
-  color: var(--primary);
-  text-decoration: none;
-  font-size: 14px;
-}
-
-.back-link:hover {
-  text-decoration: underline;
-}
