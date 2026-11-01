@@ -261,8 +261,24 @@ function saveToStorage() {
 function loadFromStorage() {
   let saved = localStorage.getItem("students");
 
-  if (saved !== null) {
-    students = JSON.parse(saved);
+  if (saved === null) {
+    return;
+  }
+
+  try {
+    let data = JSON.parse(saved);
+
+    if (!Array.isArray(data)) {
+      throw new Error("Saved data is not a list");
+    }
+
+    students = data;
+  } catch (error) {
+    students = [];
+
+    let result = document.getElementById("result");
+    result.innerHTML = "Warning: the saved students could not be read, so the list starts empty.";
+    result.className = "failed";
   }
 }
 

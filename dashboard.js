@@ -8,7 +8,17 @@ function countSaved(key) {
     return 0;
   }
 
-  return JSON.parse(saved).length;
+  try {
+    let data = JSON.parse(saved);
+
+    if (Array.isArray(data)) {
+      return data.length;
+    }
+  } catch (error) {
+    // The saved data is damaged, so we count it as empty
+  }
+
+  return 0;
 }
 
 // Make the text, for example "1 student saved"
