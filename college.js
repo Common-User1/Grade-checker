@@ -36,25 +36,29 @@ function checkGrades() {
   let result = document.getElementById("result");
 
   let name = document.getElementById("studentName").value;
-  let gradeBoxes = document.querySelectorAll(".subject-grade");
   let nameBoxes = document.querySelectorAll(".subject-name");
   let unitBoxes = document.querySelectorAll(".subject-units");
+  let midtermBoxes = document.querySelectorAll(".subject-midterm");
+  let finalBoxes = document.querySelectorAll(".subject-final");
 
-  let grades = [];
+  let midterms = [];
+  let finals = [];
   let units = [];
   let subjectList = [];
   let subjectData = [];
   let hasEmpty = name === "";
 
-  for (let i = 0; i < gradeBoxes.length; i++) {
-    if (gradeBoxes[i].value === "" || unitBoxes[i].value === "") {
+  for (let i = 0; i < midtermBoxes.length; i++) {
+    if (midtermBoxes[i].value === "" || finalBoxes[i].value === "" || unitBoxes[i].value === "") {
       hasEmpty = true;
     }
 
-    let grade = Number(gradeBoxes[i].value);
+    let midterm = Number(midtermBoxes[i].value);
+    let finalTerm = Number(finalBoxes[i].value);
     let unit = Number(unitBoxes[i].value);
 
-    grades.push(grade);
+    midterms.push(midterm);
+    finals.push(finalTerm);
     units.push(unit);
 
     let subjectName = nameBoxes[i].value;
@@ -62,17 +66,17 @@ function checkGrades() {
       subjectName = "Subject " + (i + 1);
     }
 
-    subjectList.push(subjectName + " (" + unit + "u): " + grade);
-    subjectData.push({ name: subjectName, grade: grade, units: unit });
+    subjectList.push(subjectName + " (" + unit + "u): MT " + midterm + ", FT " + finalTerm);
+    subjectData.push({ name: subjectName, units: unit, midterm: midterm, finalTerm: finalTerm });
   }
 
-  if (hasEmpty || grades.length === 0) {
+  if (hasEmpty || midterms.length === 0) {
     result.innerHTML = "Error: please fill in all the boxes";
     result.className = "failed";
     return null;
   }
 
-  if (!isValid(grades)) {
+  if (!isValid(midterms) || !isValid(finals)) {
     result.innerHTML = "Error: grades must be from 0 to 100";
     result.className = "failed";
     return null;
@@ -86,17 +90,22 @@ function checkGrades() {
     }
   }
 
-  let average = computeWeightedAverage(grades, units);
-  let remark = getRemark(average);
-  let letter = getLetter(average);
-  let highest = getHighest(grades);
+  let midtermGwa = roundTwo(computeWeightedAverage(midterms, units));
+  let finalGwa = roundTwo(computeWeightedAverage(finals, units));
+  let overallGwa = roundTwo((midtermGwa + finalGwa) / 2);
+
+  let midtermEq = getEquivalent(midtermGwa);
+  let finalEq = getEquivalent(finalGwa);
+  let overallEq = getEquivalent(overallGwa);
+
+  let remark = getRemark(overallGwa);
 
   result.innerHTML =
     "Name: " + name + "<br>" +
-    "GWA: " + average.toFixed(2) + "<br>" +
-    "Remark: " + remark + "<br>" +
-    "Letter: " + letter + "<br>" +
-    "Highest: " + highest;
+    "Midterm GWA: " + midtermGwa.toFixed(2) + " (" + midtermEq.toFixed(2) + ")<br>" +
+    "Final Term GWA: " + finalGwa.toFixed(2) + " (" + finalEq.toFixed(2) + ")<br>" +
+    "Overall GWA: " + overallGwa.toFixed(2) + " (" + overallEq.toFixed(2) + ")<br>" +
+    "Remark: " + remark;
 
   if (remark === "Passed") {
     result.className = "passed";
@@ -106,12 +115,15 @@ function checkGrades() {
 
   return {
     name: name,
-    subjects: subjectList.join(", "),
+    subjects: subjectList.join("; "),
     subjectData: subjectData,
-    average: average.toFixed(2),
-    remark: remark,
-    letter: letter,
-    highest: highest
+    midtermGwa: midtermGwa.toFixed(2),
+    midtermEq: midtermEq.toFixed(2),
+    finalGwa: finalGwa.toFixed(2),
+    finalEq: finalEq.toFixed(2),
+    average: overallGwa.toFixed(2),
+    equivalent: overallEq.toFixed(2),
+    remark: remark
   };
 }
 
