@@ -29,6 +29,7 @@ document.getElementById("addSubjectBtn").addEventListener("click", addSubjectRow
 document.getElementById("checkBtn").addEventListener("click", checkGrades);
 document.getElementById("saveBtn").addEventListener("click", saveStudent);
 document.getElementById("clearBtn").addEventListener("click", clearAll);
+document.getElementById("clearStudentsBtn").addEventListener("click", clearStudents);
 
 // Read the inputs and check the grades
 function checkGrades() {
@@ -175,7 +176,11 @@ function showStudents() {
       "<td>" + s.average + "</td>" +
       "<td>" + s.honors + "</td>" +
       '<td><span class="badge ' + badgeClass + '">' + s.remark + "</span></td>" +
-      "<td></td>";
+      '<td><button type="button" class="delete-btn">Delete</button></td>';
+
+    row.querySelector(".delete-btn").addEventListener("click", function () {
+      deleteStudent(i);
+    });
 
     body.appendChild(row);
   }
@@ -185,6 +190,8 @@ function showStudents() {
     emptyRow.innerHTML = '<td colspan="7" class="empty-message">No students saved yet.</td>';
     body.appendChild(emptyRow);
   }
+
+  showSummary();
 }
 
 // Save the students list in the browser
@@ -198,6 +205,56 @@ function loadFromStorage() {
 
   if (saved !== null) {
     students = JSON.parse(saved);
+  }
+}
+
+// Delete one student from the list
+function deleteStudent(index) {
+  students.splice(index, 1);
+  saveToStorage();
+  showStudents();
+}
+
+// Delete all saved students
+function clearStudents() {
+  if (confirm("Delete all saved students?")) {
+    students = [];
+    saveToStorage();
+    showStudents();
+  }
+}
+
+// Show the class summary
+function showSummary() {
+  let total = students.length;
+  let sum = 0;
+  let passed = 0;
+  let failed = 0;
+  let honorsCount = 0;
+
+  for (let i = 0; i < students.length; i++) {
+    sum = sum + Number(students[i].average);
+
+    if (students[i].remark === "Passed") {
+      passed = passed + 1;
+    } else {
+      failed = failed + 1;
+    }
+
+    if (students[i].honors !== "None") {
+      honorsCount = honorsCount + 1;
+    }
+  }
+
+  document.getElementById("totalStudents").textContent = total;
+  document.getElementById("passedCount").textContent = passed;
+  document.getElementById("failedCount").textContent = failed;
+  document.getElementById("honorsCount").textContent = honorsCount;
+
+  if (total > 0) {
+    document.getElementById("classAverage").textContent = (sum / total).toFixed(2);
+  } else {
+    document.getElementById("classAverage").textContent = "0";
   }
 }
 

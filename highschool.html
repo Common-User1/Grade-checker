@@ -50,6 +50,29 @@
 
     <section class="card">
       <h2>Saved Students</h2>
+      
+      <div class="summary">
+        <div class="summary-box">
+          <span class="summary-number" id="totalStudents">0</span>
+          <span class="summary-label">Total Students</span>
+        </div>
+        <div class="summary-box">
+          <span class="summary-number" id="classAverage">0</span>
+          <span class="summary-label">Class Average</span>
+        </div>
+        <div class="summary-box">
+          <span class="summary-number" id="passedCount">0</span>
+          <span class="summary-label">Passed</span>
+        </div>
+        <div class="summary-box">
+          <span class="summary-number" id="failedCount">0</span>
+          <span class="summary-label">Failed</span>
+        </div>
+        <div class="summary-box">
+          <span class="summary-number" id="honorsCount">0</span>
+          <span class="summary-label">With Honors</span>
+        </div>
+      </div>
 
       <div class="table-wrap">
         <table id="studentsTable">
@@ -67,6 +90,8 @@
           <tbody id="studentsBody"></tbody>
         </table>
       </div>
+      
+      <button id="clearStudentsBtn">Clear All Students</button>
     </section>
 
 
