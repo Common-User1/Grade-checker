@@ -307,3 +307,11 @@ th.sortable:hover {
 .edit-btn:hover {
   background-color: #d68910;
 }
+
+.hidden {
+  display: none;
+}
+
+#cancelEditBtn {
+  background-color: #e67e22;
+}

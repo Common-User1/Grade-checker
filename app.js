@@ -153,6 +153,7 @@ function clearAll() {
 function stopEditing() {
   editingIndex = -1;
   document.getElementById("saveBtn").textContent = "Save Student";
+  document.getElementById("cancelEditBtn").classList.add("hidden");
 }
 
 // Show all saved students in the table
@@ -277,6 +278,10 @@ function showSummary() {
 
 // Sort the students list by a column
 function sortStudents(column) {
+  if (editingIndex !== -1) {
+    clearAll();
+  }
+
   if (sortColumn === column) {
     if (sortDirection === "asc") {
       sortDirection = "desc";
@@ -339,6 +344,10 @@ function showArrows() {
 
 // Delete one student from the list
 function deleteStudent(index) {
+  if (editingIndex !== -1) {
+    clearAll();
+  }
+
   students.splice(index, 1);
   saveToStorage();
   showStudents();
@@ -370,6 +379,7 @@ function editStudent(index) {
   }
 
   document.getElementById("saveBtn").textContent = "Update Student";
+  document.getElementById("cancelEditBtn").classList.remove("hidden");
   document.getElementById("result").innerHTML = "";
   document.getElementById("result").className = "";
 
@@ -379,6 +389,10 @@ function editStudent(index) {
 // Delete all saved students
 function clearStudents() {
   if (confirm("Delete all saved students?")) {
+    if (editingIndex !== -1) {
+      clearAll();
+    }
+
     students = [];
     saveToStorage();
     showStudents();
@@ -401,6 +415,7 @@ loadFromStorage();
 showStudents();
 
 document.getElementById("clearStudentsBtn").addEventListener("click", clearStudents);
+document.getElementById("cancelEditBtn").addEventListener("click", clearAll);
 document.getElementById("searchBox").addEventListener("input", showStudents);
 document.getElementById("filterSelect").addEventListener("change", showStudents);
 
