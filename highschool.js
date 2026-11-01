@@ -172,8 +172,17 @@ function showStudents() {
   let body = document.getElementById("studentsBody");
   body.innerHTML = "";
 
+  let shown = 0;
+
   for (let i = 0; i < students.length; i++) {
     let s = students[i];
+
+    if (!matchesFilter(s)) {
+      continue;
+    }
+
+    shown = shown + 1;
+
     let row = document.createElement("tr");
 
     let badgeClass = "badge-failed";
@@ -202,13 +211,37 @@ function showStudents() {
     body.appendChild(row);
   }
 
-  if (students.length === 0) {
+  if (shown === 0) {
+    let message = "No students found.";
+    if (students.length === 0) {
+      message = "No students saved yet.";
+    }
+
     let emptyRow = document.createElement("tr");
-    emptyRow.innerHTML = '<td colspan="7" class="empty-message">No students saved yet.</td>';
+    emptyRow.innerHTML = '<td colspan="7" class="empty-message">' + message + "</td>";
     body.appendChild(emptyRow);
   }
 
   showSummary();
+}
+
+// Check if a student matches the search and filters
+function matchesFilter(student) {
+  let search = document.getElementById("searchBox").value.toLowerCase();
+  let level = document.getElementById("gradeFilter").value;
+  let filter = document.getElementById("filterSelect").value;
+
+  let nameMatches = student.name.toLowerCase().includes(search);
+  let levelMatches = level === "all" || student.gradeLevel === level;
+
+  let filterMatches = true;
+  if (filter === "Passed" || filter === "Failed") {
+    filterMatches = student.remark === filter;
+  } else if (filter === "Honors") {
+    filterMatches = student.honors !== "None";
+  }
+
+  return nameMatches && levelMatches && filterMatches;
 }
 
 // Save the students list in the browser
@@ -275,6 +308,9 @@ function editStudent(index) {
 
   document.getElementById("saveBtn").textContent = "Update Student";
   document.getElementById("cancelEditBtn").classList.remove("hidden");
+  document.getElementById("searchBox").addEventListener("input", showStudents);
+  document.getElementById("gradeFilter").addEventListener("change", showStudents);
+  document.getElementById("filterSelect").addEventListener("change", showStudents);
   document.getElementById("result").innerHTML = "";
   document.getElementById("result").className = "";
 
