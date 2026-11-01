@@ -317,9 +317,9 @@ function sortStudents(column) {
     let first = a[column];
     let second = b[column];
 
-    if (column === "average" || column === "highest") {
-      first = Number(first);
-      second = Number(second);
+    if (column === "average" || column === "midtermGwa" || column === "finalGwa") {
+      first = Number(first) || 0;
+      second = Number(second) || 0;
     } else {
       first = String(first).toLowerCase();
       second = String(second).toLowerCase();
