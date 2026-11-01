@@ -92,7 +92,7 @@ function checkGrades() {
 
   result.innerHTML =
     "Name: " + name + "<br>" +
-    "Average: " + average.toFixed(2) + "<br>" +
+    "GWA: " + average.toFixed(2) + "<br>" +
     "Remark: " + remark + "<br>" +
     "Letter: " + letter + "<br>" +
     "Highest: " + highest;
@@ -224,11 +224,6 @@ function saveToStorage() {
   localStorage.setItem("students", JSON.stringify(students));
 }
 
-// Save the students list in the browser
-function saveToStorage() {
-  localStorage.setItem("students", JSON.stringify(students));
-}
-
 // Load the saved students when the page opens
 function loadFromStorage() {
   let saved = localStorage.getItem("students");
@@ -345,14 +340,36 @@ function showArrows() {
 // Switch between light and dark mode
 function toggleTheme() {
   let root = document.documentElement;
-  let themeBtn = document.getElementById("themeBtn");
 
   if (root.getAttribute("data-theme") === "dark") {
-    root.removeAttribute("data-theme");
-    themeBtn.textContent = "Dark Mode";
+    setTheme("light");
   } else {
+    setTheme("dark");
+  }
+}
+
+// Apply a theme and save it in the browser
+function setTheme(theme) {
+  let root = document.documentElement;
+  let themeBtn = document.getElementById("themeBtn");
+
+  if (theme === "dark") {
     root.setAttribute("data-theme", "dark");
     themeBtn.textContent = "Light Mode";
+  } else {
+    root.removeAttribute("data-theme");
+    themeBtn.textContent = "Dark Mode";
+  }
+
+  localStorage.setItem("theme", theme);
+}
+
+// Load the saved theme when the page opens
+function loadTheme() {
+  let saved = localStorage.getItem("theme");
+
+  if (saved === "dark") {
+    setTheme("dark");
   }
 }
 
@@ -442,3 +459,6 @@ for (let i = 0; i < sortHeadings.length; i++) {
 }
 
 document.getElementById("themeBtn").addEventListener("click", toggleTheme);
+
+// Load the saved theme
+loadTheme();
