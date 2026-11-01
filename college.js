@@ -290,7 +290,14 @@ function showSummary() {
   }
 
   document.getElementById("totalStudents").textContent = total;
-  document.getElementById("classAverage").textContent = classAverage.toFixed(2);
+  
+    if (total > 0) {
+    document.getElementById("classAverage").textContent =
+      classAverage.toFixed(2) + " (" + getEquivalent(classAverage).toFixed(2) + ")";
+  } else {
+    document.getElementById("classAverage").textContent = "0";
+  }
+
   document.getElementById("passedCount").textContent = passed;
   document.getElementById("failedCount").textContent = failed;
   document.getElementById("topStudent").textContent = topName;
