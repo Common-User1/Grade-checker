@@ -135,15 +135,22 @@ function saveStudent() {
     return;
   }
 
+  let message = "Student saved.";
+
   if (editingIndex === -1) {
     students.push(student);
   } else {
     students[editingIndex] = student;
-    clearAll();
+    message = "Student updated.";
   }
 
   saveToStorage();
+  clearAll();
   showStudents();
+
+  let result = document.getElementById("result");
+  result.innerHTML = message;
+  result.className = "passed";
 }
 
 // Clear all inputs and the result
