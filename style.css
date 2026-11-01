@@ -434,3 +434,6 @@ select {
   --badge-failed-bg: #4a1f1f;
 }
 
+.quarter {
+  flex: 1;
+}
