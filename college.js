@@ -192,13 +192,25 @@ function showStudents() {
       badgeClass = "badge-passed";
     }
 
+    let midtermText = "-";
+    let finalText = "-";
+    if (s.midtermGwa) {
+      midtermText = s.midtermGwa + " (" + s.midtermEq + ")";
+      finalText = s.finalGwa + " (" + s.finalEq + ")";
+    }
+
+    let overallText = s.average;
+    if (s.equivalent) {
+      overallText = s.average + " (" + s.equivalent + ")";
+    }
+
     row.innerHTML =
       "<td>" + s.name + "</td>" +
       "<td>" + s.subjects + "</td>" +
-      "<td>" + s.average + "</td>" +
+      "<td>" + midtermText + "</td>" +
+      "<td>" + finalText + "</td>" +
+      "<td>" + overallText + "</td>" +
       '<td><span class="badge ' + badgeClass + '">' + s.remark + "</span></td>" +
-      "<td>" + s.letter + "</td>" +
-      "<td>" + s.highest + "</td>" +
       '<td><button type="button" class="edit-btn">Edit</button> ' +
       '<button type="button" class="delete-btn">Delete</button></td>';
 
