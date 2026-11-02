@@ -13,6 +13,12 @@
   --fs-small: 12px;
   --fs-stat: 22px;
 
+  --radius-sm: 4px;
+  --radius: 6px;
+  --radius-lg: 8px;
+  --control-h: 40px;
+  --control-h-sm: 30px;
+
   --bg: #f8fafc;
   --panel: #ffffff;
   --text: #0f172a;
@@ -202,7 +208,7 @@ body.page-college {
   padding: 24px;
   background-color: var(--panel);
   border: 1px solid var(--border);
-  border-radius: 6px;
+  border-radius: var(--radius-lg);
 }
 
 .card > h2 {
@@ -241,14 +247,35 @@ label {
 }
 
 input,
-select {
+select,
+textarea {
+  min-height: var(--control-h);
   padding: 8px 10px;
   font-family: inherit;
   font-size: var(--fs-body);
   color: var(--text);
   background-color: var(--input-bg);
   border: 1px solid var(--border-strong);
-  border-radius: 4px;
+  border-radius: var(--radius);
+}
+
+textarea {
+  width: 100%;
+  min-height: 90px;
+  resize: vertical;
+}
+
+input:hover,
+select:hover,
+textarea:hover {
+  border-color: var(--text-muted);
+}
+
+input:disabled,
+select:disabled,
+textarea:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 input::placeholder {
@@ -278,6 +305,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 input:focus-visible,
 select:focus-visible,
+textarea:focus-visible,
 button:focus-visible,
 a:focus-visible {
   outline: 2px solid var(--focus);
@@ -311,6 +339,7 @@ a:focus-visible {
 
 /* ---------- Buttons ---------- */
 button {
+  min-height: var(--control-h);
   padding: 8px 14px;
   font-family: inherit;
   font-size: var(--fs-label);
@@ -318,12 +347,17 @@ button {
   color: var(--text);
   background-color: transparent;
   border: 1px solid var(--border-strong);
-  border-radius: 4px;
+  border-radius: var(--radius);
   cursor: pointer;
 }
 
 button:hover {
-  background-color: var(--row-hover);
+  background-color: var(--table-head);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 #checkBtn {
@@ -348,8 +382,8 @@ button:hover {
 }
 
 .remove-btn {
-  width: 40px;
-  padding: 8px 0;
+  width: var(--control-h);
+  padding: 0;
 }
 
 .remove-btn,
@@ -366,6 +400,7 @@ button:hover {
 
 .edit-btn,
 .delete-btn {
+  min-height: var(--control-h-sm);
   padding: 4px 10px;
   font-size: var(--fs-label-sm);
 }
@@ -382,11 +417,13 @@ button:hover {
 }
 
 .button-link {
-  display: inline-block;
+  min-height: var(--control-h);
   padding: 8px 14px;
+  display: inline-flex;
+  align-items: center;
   color: var(--on-primary);
   background-color: var(--primary);
-  border-radius: 4px;
+  border-radius: var(--radius);
   font-size: var(--fs-label);
   font-weight: 500;
   text-decoration: none;
@@ -402,7 +439,7 @@ button:hover {
   padding: 14px 16px;
   border: 1px solid var(--border);
   border-left-width: 4px;
-  border-radius: 4px;
+  border-radius: var(--radius);
   line-height: 1.7;
 }
 
@@ -428,7 +465,7 @@ button:hover {
   margin-bottom: 20px;
   background-color: var(--border);
   border: 1px solid var(--border);
-  border-radius: 6px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
 }
 
@@ -477,7 +514,7 @@ button:hover {
   margin-bottom: 16px;
   overflow-x: auto;
   border: 1px solid var(--border);
-  border-radius: 6px;
+  border-radius: var(--radius-lg);
 }
 
 table {
@@ -544,7 +581,7 @@ td:last-child {
 .badge {
   display: inline-block;
   padding: 2px 8px;
-  border-radius: 3px;
+  border-radius: var(--radius-sm);
   font-size: var(--fs-label-sm);
   font-weight: 500;
 }
