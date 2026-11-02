@@ -2,7 +2,7 @@
 
 /* ---------- Colors ---------- */
 :root {
-  --font: "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+    --font: "Inter", Arial, sans-serif;
 
   --bg: #f8fafc;
   --panel: #ffffff;
