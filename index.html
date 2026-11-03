@@ -14,7 +14,7 @@
 </head>
 <body class="page-home">
   <div class="app">
-    <aside class="sidebar">
+    <aside class="sidebar" id="sidebar">
       <a class="brand" href="index.html">
         <img src="logo.svg" alt="" class="brand-logo">
         <span>Grade Checker</span>
@@ -26,9 +26,18 @@
       </nav>
     </aside>
 
+    <div class="backdrop" id="backdrop"></div>
+
     <div class="main">
       <header class="topbar">
-        <span class="topbar-title">Dashboard</span>
+        <div class="topbar-left">
+          <button id="menuBtn" class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+              <path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+          <span class="topbar-title">Dashboard</span>
+        </div>
         <button id="themeBtn" class="theme-btn" type="button">Dark Mode</button>
       </header>
 
@@ -78,6 +87,7 @@
     </div>
   </div>
 
+  <script src="layout.js"></script>
   <script src="dashboard.js"></script>
 </body>
 </html>

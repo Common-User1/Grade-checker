@@ -213,6 +213,24 @@ body.page-college {
   font-weight: 600;
 }
 
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.menu-btn {
+  width: var(--control-h);
+  padding: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.backdrop {
+  display: none;
+}
+
 /* ---------- Page layout ---------- */
 .container {
   width: 100%;
@@ -665,33 +683,40 @@ td:last-child {
 
 /* ---------- Phone ---------- */
 @media (max-width: 720px) {
-  .app {
-    flex-direction: column;
-  }
-
   .sidebar {
-    position: static;
-    width: 100%;
-    height: auto;
-    padding: 12px 14px;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 8px 16px;
-    border-right: none;
-    border-bottom: 1px solid var(--border);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    width: 260px;
+    max-width: 85%;
+    transform: translateX(-100%);
+    transition: transform 0.2s ease;
   }
 
-  .nav {
-    flex-direction: row;
-    flex-basis: 100%;
-    overflow-x: auto;
+  .sidebar-open .sidebar {
+    transform: none;
+  }
+
+  .sidebar-open {
+    overflow: hidden;
+  }
+
+  .sidebar-open .backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    display: block;
+    background-color: rgba(15, 23, 42, 0.5);
+  }
+
+  .menu-btn {
+    display: inline-flex;
   }
 
   .topbar {
-    height: auto;
-    min-height: 56px;
-    padding: 8px 14px;
+    height: 56px;
+    padding: 0 14px;
   }
 
   .container {
@@ -742,5 +767,11 @@ td:last-child {
 
   .actions button {
     flex: 1 1 auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sidebar {
+    transition: none;
   }
 }
