@@ -35,6 +35,7 @@
   --primary-hover: #1d4ed8;
   --link: #2563eb;
   --focus: #2563eb;
+  --primary-soft: #eff6ff;
 
   --success: #16a34a;
   --warning: #f59e0b;
@@ -65,6 +66,7 @@
   --primary-hover: #93c5fd;
   --link: #60a5fa;
   --focus: #60a5fa;
+  --primary-soft: #1e3a5f;
 
   --success: #22c55e;
   --warning: #fbbf24;
@@ -84,8 +86,6 @@
 body {
   min-height: 100vh;
   margin: 0;
-  display: flex;
-  flex-direction: column;
   font-family: var(--font);
   font-size: var(--fs-body);
   line-height: 1.5;
@@ -127,22 +127,36 @@ body.page-college {
   --cols-phone: repeat(3, 1fr) 40px;
 }
 
-/* ---------- Top bar ---------- */
-.topbar {
-  background-color: var(--panel);
-  border-bottom: 1px solid var(--border);
+/* ---------- Layout ---------- */
+.app {
+  display: flex;
+  min-height: 100vh;
 }
 
-.topbar-inner {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 10px 20px;
+.main {
+  flex: 1;
+  min-width: 0;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+}
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+  position: sticky;
+  top: 0;
+  width: 250px;
+  height: 100vh;
+  flex-shrink: 0;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
   gap: 28px;
+  background-color: var(--panel);
+  border-right: 1px solid var(--border);
 }
 
 .brand {
+  padding: 0 8px;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -160,37 +174,52 @@ body.page-college {
 
 .nav {
   display: flex;
+  flex-direction: column;
   gap: 4px;
 }
 
 .nav a {
-  padding: 8px 12px;
-  border-bottom: 2px solid transparent;
+  padding: 10px 12px;
+  border-radius: var(--radius);
   color: var(--text-muted);
   font-size: var(--fs-body);
+  font-weight: 500;
   text-decoration: none;
 }
 
 .nav a:hover {
   color: var(--text);
+  background-color: var(--table-head);
 }
 
 .nav a[aria-current="page"] {
-  color: var(--text);
-  border-bottom-color: var(--primary);
+  color: var(--link);
+  background-color: var(--primary-soft);
 }
 
-.theme-btn {
-  margin-left: auto;
+/* ---------- Top navbar ---------- */
+.topbar {
+  height: 64px;
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--panel);
+  border-bottom: 1px solid var(--border);
+}
+
+.topbar-title {
+  font-size: var(--fs-card);
+  font-weight: 600;
 }
 
 /* ---------- Page layout ---------- */
 .container {
   width: 100%;
-  max-width: 1000px;
+  max-width: 1100px;
   flex: 1 0 auto;
   margin: 0 auto;
-  padding: 32px 20px 40px;
+  padding: 28px;
 }
 
 .page-head {
@@ -222,7 +251,7 @@ body.page-college {
 }
 
 .footer {
-  width: min(960px, calc(100% - 40px));
+  width: min(1044px, calc(100% - 56px));
   margin: 0 auto;
   padding: 20px 0;
   display: flex;
@@ -636,18 +665,33 @@ td:last-child {
 
 /* ---------- Phone ---------- */
 @media (max-width: 720px) {
-  .topbar-inner {
+  .app {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    padding: 12px 14px;
+    flex-direction: row;
     flex-wrap: wrap;
+    align-items: center;
     gap: 8px 16px;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
   }
 
   .nav {
-    order: 3;
+    flex-direction: row;
     flex-basis: 100%;
+    overflow-x: auto;
   }
 
-  .nav a {
-    padding: 8px 10px;
+  .topbar {
+    height: auto;
+    min-height: 56px;
+    padding: 8px 14px;
   }
 
   .container {

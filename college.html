@@ -12,8 +12,8 @@
   <script src="theme.js"></script>
 </head>
 <body class="page-college">
-  <header class="topbar">
-    <div class="topbar-inner">
+  <div class="app">
+    <aside class="sidebar">
       <a class="brand" href="index.html">
         <img src="logo.svg" alt="" class="brand-logo">
         <span>Grade Checker</span>
@@ -23,11 +23,15 @@
         <a href="highschool.html">High School</a>
         <a href="college.html" aria-current="page">College</a>
       </nav>
-      <button id="themeBtn" class="theme-btn" type="button">Dark Mode</button>
-    </div>
-  </header>
+    </aside>
 
-  <main class="container">
+    <div class="main">
+      <header class="topbar">
+        <span class="topbar-title">College</span>
+        <button id="themeBtn" class="theme-btn" type="button">Dark Mode</button>
+      </header>
+
+<main class="container">
 
     <div class="page-head">
       <h1>College</h1>
@@ -119,12 +123,14 @@
       <button id="clearStudentsBtn">Clear All Students</button>
     </section>
 
-  </main>
+    </main>
 
-  <footer class="footer">
-    <span>Grade Checker by Michael John J. Felices</span>
-    <a href="https://github.com/Common-User1/Grade-checker" target="_blank" rel="noopener">View on GitHub</a>
-  </footer>
+      <footer class="footer">
+        <span>Grade Checker by Common-User1</span>
+        <a href="https://github.com/Common-User1/Grade-checker" target="_blank" rel="noopener">View on GitHub</a>
+      </footer>
+    </div>
+  </div>
 
   <script src="grade.js"></script>
   <script src="college.js"></script>
