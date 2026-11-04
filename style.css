@@ -681,8 +681,9 @@ td:last-child {
   font-size: var(--fs-label-sm);
 }
 
-/* ---------- Phone ---------- */
-@media (max-width: 720px) {
+/* ---------- Tablet and phone ---------- */
+/* Tablet: 960px and below. Phone: 720px and below. */
+@media (max-width: 960px) {
   .sidebar {
     position: fixed;
     top: 0;
@@ -713,7 +714,9 @@ td:last-child {
   .menu-btn {
     display: inline-flex;
   }
+}
 
+@media (max-width: 720px) {
   .topbar {
     height: 56px;
     padding: 0 14px;
